@@ -6,7 +6,7 @@
 | --- | --- |
 | **Area** | Store Credit (`SC`) |
 | **Priority** | Medium-High |
-| **MVP** | Should-have (issue + redeem credit; basic accounts) |
+| **MVP** | Later |
 | **Status** | Draft |
 | **Owner** | _TBD_ |
 

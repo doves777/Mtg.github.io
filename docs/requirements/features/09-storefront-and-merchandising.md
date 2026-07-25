@@ -6,7 +6,7 @@
 | --- | --- |
 | **Area** | Storefront (`STF`) |
 | **Priority** | Medium (buyer-facing depth; grows after core ops) |
-| **MVP** | Partial (browse + pickup covered in `CX`/`ORD`); merchandising later |
+| **MVP** | Later (buyer browse + pickup for MVP is covered in `CX`/`ORD`) |
 | **Status** | Draft |
 | **Owner** | _TBD_ |
 
