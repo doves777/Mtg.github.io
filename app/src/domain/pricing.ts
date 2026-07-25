@@ -20,19 +20,30 @@ export interface CartLine {
 export interface CartTotals {
   subtotalCents: number;
   discountCents: number;
+  taxCents: number;
   totalCents: number;
 }
 
-/** Automatic totals with an optional whole-order discount (POS-2, POS-3). */
-export function computeTotals(lines: CartLine[], discountCents = 0): CartTotals {
+export interface TotalsOptions {
+  discountCents?: number;
+  /** Tax rate in basis points (e.g. 825 = 8.25%). */
+  taxRateBps?: number;
+}
+
+/** Automatic totals with an optional whole-order discount and tax (POS-2, POS-3). */
+export function computeTotals(lines: CartLine[], opts: TotalsOptions = {}): CartTotals {
+  const { discountCents = 0, taxRateBps = 0 } = opts;
   const subtotalCents = lines.reduce(
     (sum, line) => sum + line.unitPriceCents * line.quantity,
     0,
   );
   const clampedDiscount = Math.min(Math.max(discountCents, 0), subtotalCents);
+  const taxableCents = subtotalCents - clampedDiscount;
+  const taxCents = Math.round((taxableCents * taxRateBps) / 10000);
   return {
     subtotalCents,
     discountCents: clampedDiscount,
-    totalCents: subtotalCents - clampedDiscount,
+    taxCents,
+    totalCents: taxableCents + taxCents,
   };
 }
