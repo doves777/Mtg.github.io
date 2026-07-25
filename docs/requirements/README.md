@@ -22,6 +22,7 @@ This folder is the single source of truth for *what* we are building and *why*. 
 | 11 | [User Stories](./11-user-stories.md) | Stories by user type |
 | 12 | [Risks](./12-risks.md) | Key risks to watch |
 | 13 | [Roadmap & Next Steps](./13-roadmap-and-next-steps.md) | How to kick off and sequence work |
+| — | [Customer Discovery](./discovery/README.md) | Interview kit for validating the problem (roadmap step 1) |
 
 Reusable template for new features: [`_feature-template.md`](./_feature-template.md)
 
