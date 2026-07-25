@@ -17,13 +17,17 @@ Interview **10–20** medium-to-large card show vendors and answer:
 | [`interview-guide.md`](./interview-guide.md) | The comprehensive question bank, organized by theme and tagged to requirement areas. |
 | [`screener.md`](./screener.md) | Recruiting/screener questions to find qualified vendors before booking an interview. |
 | [`interview-notes-template.md`](./interview-notes-template.md) | Copy per interview to capture answers, quotes, and signals consistently. |
+| [`interview-tracker.md`](./interview-tracker.md) | Pipeline log, progress toward the target, and a coverage matrix for a balanced sample. |
+| [`findings.md`](./findings.md) | Living synthesis across interviews — pain rollup, wedge decision, and MVP impact. |
+
+Per-interview notes go in a `notes/` subfolder (one file per interview, copied from the template). Create it when you run your first interview.
 
 ## How to run a session (30–45 min)
 
-1. **Recruit** with the [screener](./screener.md) so you interview the right profile.
+1. **Recruit** with the [screener](./screener.md) so you interview the right profile; log them in the [tracker](./interview-tracker.md).
 2. **Interview** using the [guide](./interview-guide.md) — you won't ask every question; follow the pain.
-3. **Capture** with the [notes template](./interview-notes-template.md) during or immediately after.
-4. **Synthesize** after every 3–5 interviews: update requirement docs and the [MVP scope](../10-mvp-scope.md) with what you learn.
+3. **Capture** with the [notes template](./interview-notes-template.md) during or immediately after (save into `notes/`).
+4. **Synthesize** after every 3–5 interviews in [`findings.md`](./findings.md): update requirement docs and the [MVP scope](../10-mvp-scope.md) with what you learn.
 
 ## Interview principles (Mom Test)
 
