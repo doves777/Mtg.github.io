@@ -81,3 +81,5 @@ _Add more acceptance criteria here (e.g. `INV-1`, `INV-5`, `INV-10`)._
 ## Additional Details
 
 _Add the inventory data model, attribute list, bulk-upload format, and location model here._
+
+- Card data model (MTG first): [`../../architecture/data-model/card-mtg.md`](../../architecture/data-model/card-mtg.md) — oracle / printing / inventory layers.
