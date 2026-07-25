@@ -39,6 +39,10 @@ Orders tie inventory, pricing, and checkout together. The platform must support 
 - [ ] **ORD-18** — Vendors can check in customers at pickup.
 - [ ] **ORD-19** — Orders can expire if not picked up.
 
+### Preorders
+
+- [ ] **ORD-20** — Support preorders for upcoming/announced releases: accept orders before stock arrives and fulfill on release.
+
 ## Acceptance Criteria
 
 > Seeded from the original draft. Add or refine criteria per requirement using its ID.

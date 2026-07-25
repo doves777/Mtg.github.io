@@ -35,6 +35,11 @@ Employees need fast, consistent pricing during checkout — even when Wi-Fi is s
 - [ ] **PRC-14** — Identify fast-moving or underpriced items.
 - [ ] **PRC-15** — Identify stale inventory that may need markdowns.
 
+### Price Sources & Rules
+
+- [ ] **PRC-16** — Support multiple price bases/sources (market, median, low + shipping, custom calculations).
+- [ ] **PRC-17** — Support advanced pricing-rule conditions (by game, set, rarity, finish, condition, price band, or stock level).
+
 ## Acceptance Criteria
 
 > Seeded from the original draft. Add or refine criteria per requirement using its ID.

@@ -40,6 +40,12 @@ Acquisition is the mirror of selling. Vendors need fast intake, scalable buylist
 - [ ] **BUY-19** — Flag risky buy prices (low liquidity, falling prices, poor sell-through).
 - [ ] **BUY-20** — Allow vendors to approve, schedule, or lock buylist price changes before publishing.
 
+### Submission & Credit
+
+- [ ] **BUY-21** — Support fast buylist submission by single card, pasted decklist, or bulk list.
+- [ ] **BUY-22** — Support distinct cash vs. store-credit offers, including a store-wide credit multiplier plus per-rule/per-condition overrides and trade-in bonuses (see [Store Credit `SC`](./08-store-credit-and-accounts.md)).
+- [ ] **BUY-23** — Provide storefront "Sell to Us" entry points from product pages/search (see [Storefront `STF`](./09-storefront-and-merchandising.md)).
+
 ## Acceptance Criteria
 
 > Seeded from the original draft. Add or refine criteria per requirement using its ID.
