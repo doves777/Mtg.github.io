@@ -41,6 +41,8 @@ Define exactly what "offline" means. For MVP, start with:
 
 ### 6. Build a competitive review
 
+Map the landscape so our differentiation is concrete. The full scaffold — competitor shortlist, scoring rubric, comparison matrix, per-competitor deep-dives, and whitespace analysis — lives in [`competitive-review.md`](./competitive-review.md). Starter matrix:
+
 | Area | Binder POS | StorePass | Product Opportunity |
 | --- | --- | --- | --- |
 | Inventory | | | |
