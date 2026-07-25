@@ -10,7 +10,7 @@
 ## Kick-Off Recommendations
 
 ### 1. Start with customer discovery
-Before building, interview 10–20 vendors. Suggested questions:
+Before building, interview 10–20 vendors. A full interview kit — comprehensive question bank, screener, and notes template — lives in [`discovery/`](./discovery/README.md). Starter questions:
 
 - How do you currently manage inventory at shows?
 - How do employees look up prices?
