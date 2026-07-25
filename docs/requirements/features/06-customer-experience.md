@@ -34,6 +34,14 @@ _Example placeholder — replace with real criteria:_
 - [ ] Customer can add available items to a cart and submit a pickup order for a specific event.
 - [ ] Customer immediately receives a confirmation with pickup location and window.
 
+### CX-1 — Browse available inventory
+- [ ] Customer can view a vendor's available (unreserved) inventory online.
+- [ ] Out-of-stock or fully reserved items are not shown as available to purchase.
+
+### CX-5 — See order status
+- [ ] Customer can view the current status of a pickup order (e.g. Pending, Reserved, Ready for pickup, Completed).
+- [ ] Status changes made by the vendor are reflected for the customer.
+
 _Add more acceptance criteria here (e.g. `CX-2` search, `CX-7` want lists)._
 
 ## Future Possibilities

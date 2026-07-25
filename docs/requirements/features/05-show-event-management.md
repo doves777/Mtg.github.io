@@ -36,6 +36,19 @@ _Example placeholder — replace with real criteria:_
 - [ ] Vendor can add/remove inventory to an event before and during the show.
 - [ ] Only event-assigned inventory appears in that show's pickup listings and reports.
 
+### EVT-1 — Create an event/show profile
+- [ ] Vendor can create a show with name, dates, location, and booth/table details.
+- [ ] The active event can be selected so new sales and orders are attributed to it.
+
+### EVT-4 — Track orders by event
+- [ ] Orders created during or assigned to a show are linked to that event.
+- [ ] Vendor can view the list of orders for a specific event.
+
+### EVT-6 — Event sales reports
+- [ ] Vendor can view an event report showing total sales, top-selling items, and count of inventory sold.
+- [ ] Report distinguishes sold vs. unsold inventory assigned to the event.
+- [ ] An at-a-glance event summary is available after the show.
+
 _Add more acceptance criteria here (e.g. `EVT-6` sales reports, `EVT-9` pre-show prep)._
 
 ## Open Questions

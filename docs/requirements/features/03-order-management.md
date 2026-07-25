@@ -50,6 +50,26 @@ Orders tie inventory, pricing, and checkout together. The platform must support 
 - [ ] Customer receives pickup instructions.
 - [ ] Vendor can mark order picked up.
 
+### ORD-1 — Create orders in person
+- [ ] Employee can start a new in-person order that is saved as a Draft.
+- [ ] A new order captures the selling employee and, when applicable, the event/show context.
+
+### ORD-2 — Add cards to an order quickly
+- [ ] Employee can add a card to the active order from search or scan results in a single action.
+- [ ] Adding the same card again increments its line quantity rather than creating a duplicate line.
+
+### ORD-4 — Discounts, taxes, and fees
+- [ ] Employee can apply a line-level or order-level discount (percentage or fixed amount).
+- [ ] Applicable taxes and fees are calculated and reflected in the order total.
+
+### ORD-5 — Order status and completion
+- [ ] Order status can move through Draft, Pending, Reserved, Ready for pickup, Completed, Canceled, and Refunded.
+- [ ] Marking an order Completed finalizes the total and triggers the inventory update.
+
+### ORD-19 — Pickup order expiry
+- [ ] A pickup order that is not collected within its window can be expired.
+- [ ] Expiring an order releases its reserved inventory back to available stock.
+
 _Add more acceptance criteria here (e.g. `ORD-4` discounts/taxes, `ORD-10` split/merge)._
 
 ## Open Questions

@@ -45,6 +45,26 @@ _Example placeholder — replace with real criteria:_
 - [ ] Cart total updates instantly as items, discounts, taxes, and fees change.
 - [ ] Totals match the receipt exactly.
 
+### POS-10 — Continue building carts offline
+- [ ] Employee can keep adding items and building a cart while the device is offline.
+- [ ] A cart started offline can be completed as an order without a connection.
+
+### POS-11 — Cache inventory and pricing locally
+- [ ] Inventory and pricing needed for the current event are available on-device before going offline.
+- [ ] The app indicates when cached data was last refreshed.
+
+### POS-12 — Queue transactions for sync
+- [ ] Transactions completed offline are stored locally and queued for sync.
+- [ ] Queued transactions sync automatically once connectivity is restored.
+
+### POS-13 — Show sync status
+- [ ] The app clearly shows whether it is online, offline, or syncing.
+- [ ] The number of pending unsynced transactions is visible to the employee.
+
+### POS-14 — Prevent or flag overselling offline
+- [ ] The app warns when an offline sale would exceed the last known available quantity.
+- [ ] Potential oversells are flagged for review during sync and conflict resolution.
+
 _Add more acceptance criteria here (e.g. `POS-10` offline carts, `POS-14` oversell prevention)._
 
 ## Open Questions
