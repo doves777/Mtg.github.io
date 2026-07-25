@@ -36,7 +36,8 @@ decision. We follow a lightweight version of the classic
 
 Domain data-model references (shapes/fields/examples, not decisions) live in [`data-model/`](./data-model/README.md):
 
-- [Card — MTG](./data-model/card-mtg.md) — oracle / printing / inventory layers, with a worked example.
+- [Card — MTG](./data-model/card-mtg.md) — single card (printing + shared inventory), selling-focused.
+- [Sealed Product — MTG](./data-model/sealed-product-mtg.md) — boxes, bundles, decks/kits, packs.
 
 ## Related
 
