@@ -46,6 +46,11 @@ Employees need fast, consistent pricing during checkout — even when Wi-Fi is s
 - [ ] Orders created offline are queued for later sync.
 - [ ] The system warns about possible inventory conflicts after reconnecting.
 
+### PRC-1 — Fast price lookup at checkout
+- [ ] Employee can look up a card's current price during checkout by name, set, or scanned code.
+- [ ] Lookup results display the price alongside condition and available quantity.
+- [ ] Price lookup returns results quickly enough for live checkout use.
+
 _Add more acceptance criteria here (e.g. `PRC-4` overrides, `PRC-10` channel pricing)._
 
 ## Open Questions

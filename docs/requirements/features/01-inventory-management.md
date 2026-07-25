@@ -37,6 +37,39 @@ Vendors need one reliable catalog of cards that stays accurate as items are adde
 - [ ] Results display price, quantity, condition, and location.
 - [ ] Users can add a card directly from search results to an order.
 
+### INV-1 — Add, edit, and remove cards
+- [ ] User can create a card with the required fields (name, category, condition, quantity, price).
+- [ ] Editing a card updates it everywhere it appears (search results, open orders, reports).
+- [ ] Removing a card is blocked or soft-deleted when it is referenced by an open or reserved order.
+
+### INV-2 — Track quantity available
+- [ ] Each card shows a current available quantity that reflects on-hand units minus reserved units.
+- [ ] Available quantity cannot drop below zero through normal order or checkout actions.
+
+### INV-3 — Track card attributes
+- [ ] User can record condition, set, language, variant, and grading status on a card.
+- [ ] Recorded attributes are shown in search results and on the card detail view.
+
+### INV-4 — Support multiple categories
+- [ ] User can assign a card to a category (e.g. sports, Pokémon, Magic, Yu-Gi-Oh!, One Piece, Lorcana).
+- [ ] Inventory can be filtered by category.
+
+### INV-6 — Barcode, SKU, or ID lookup
+- [ ] User can look up a card by scanning a barcode/QR code or entering a SKU or internal ID.
+- [ ] A lookup that matches no inventory returns a clear "not found" result.
+
+### INV-7 — Track inventory by location
+- [ ] A card's quantity can be attributed to a location (warehouse, store, show booth, showcase, binder, employee station).
+- [ ] Inventory can be viewed and filtered by location.
+
+### INV-8 — Update inventory on order changes
+- [ ] Completing an order decrements available quantity for each item sold.
+- [ ] Canceling or refunding an order returns the affected quantity to available stock.
+
+### INV-10 — Reserved inventory for pickup
+- [ ] Accepting an online pickup order reserves the ordered quantity so it cannot be sold twice.
+- [ ] Reserved quantity is excluded from the available quantity shown to other sales channels.
+
 _Add more acceptance criteria here (e.g. `INV-1`, `INV-5`, `INV-10`)._
 
 ## Open Questions
