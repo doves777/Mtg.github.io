@@ -24,10 +24,22 @@ export default async function StorefrontPage() {
         <h2>Available now</h2>
         {available.map((item) => (
           <div key={item.id} className="list-item">
-            <div>
-              <div>{item.card.name}</div>
-              <div className="muted">
-                {item.card.setName} · {item.card.category} · {item.condition}
+            <div className="row">
+              {item.card.imageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={item.card.imageUrl}
+                  alt={item.card.name}
+                  width={48}
+                  height={68}
+                  style={{ borderRadius: 6, objectFit: "cover" }}
+                />
+              )}
+              <div>
+                <div>{item.card.name}</div>
+                <div className="muted">
+                  {item.card.setName} · {item.card.category} · {item.condition}
+                </div>
               </div>
             </div>
             <div className="row">

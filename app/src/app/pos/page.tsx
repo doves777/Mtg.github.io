@@ -256,8 +256,29 @@ export default function PosPage() {
                   onClick={() => addToCart(item)}
                   disabled={soldOut}
                 >
-                  <span className="tile-art" style={{ background: item.card.accent }}>
-                    {item.card.setCode ?? "MTG"}
+                  <span
+                    className="tile-art"
+                    style={{ background: item.card.accent ?? "#334155" }}
+                  >
+                    {item.card.imageUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={item.card.imageUrl}
+                        alt={item.card.name}
+                        className="tile-img"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <span className="tile-art-fallback">
+                        {item.card.setCode ?? "MTG"}
+                      </span>
+                    )}
+                    {item.card.productType === "sealed_product" && (
+                      <span className="tile-sealed">SEALED</span>
+                    )}
+                    {item.card.finish === "foil" && (
+                      <span className="tile-foil">FOIL</span>
+                    )}
                   </span>
                   <span className="tile-body">
                     <span className="tile-name">{item.card.name}</span>

@@ -36,8 +36,10 @@ export interface Card {
   rarity?: Rarity;
   finish?: Finish;
   productType?: ProductType;
-  /** Accent color for the visual tile (stand-in for card art in the prototype). */
+  /** Accent color used as fallback when imageUrl is missing. */
   accent?: string;
+  /** Card/product art URL (prototype uses Scryfall CDN for MTG singles). */
+  imageUrl?: string;
 }
 
 export interface InventoryItem extends TenantScoped {
