@@ -17,7 +17,11 @@ export type CardCategory =
   | "Lorcana"
   | "Other";
 
-export type Condition = "NM" | "LP" | "MP" | "HP" | "DMG" | "Graded";
+export type Condition = "NM" | "LP" | "MP" | "HP" | "DMG" | "Graded" | "Sealed";
+
+export type Finish = "nonfoil" | "foil" | "etched";
+export type ProductType = "single_card" | "sealed_product";
+export type Rarity = "common" | "uncommon" | "rare" | "mythic" | "special";
 
 export interface Card {
   id: string;
@@ -26,6 +30,16 @@ export interface Card {
   category: CardCategory;
   /** Human/scannable identifier (barcode, SKU, QR). See INV-6. */
   sku: string;
+  // Optional selling-focused catalog metadata (see data-model/card-mtg.md).
+  setCode?: string;
+  collectorNumber?: string;
+  rarity?: Rarity;
+  finish?: Finish;
+  productType?: ProductType;
+  /** Accent color used as fallback when imageUrl is missing. */
+  accent?: string;
+  /** Card/product art URL (prototype uses Scryfall CDN for MTG singles). */
+  imageUrl?: string;
 }
 
 export interface InventoryItem extends TenantScoped {
@@ -50,7 +64,8 @@ export function searchInventory(items: InventoryItem[], query: string): Inventor
   const q = query.trim().toLowerCase();
   if (!q) return items;
   return items.filter((it) => {
-    const haystack = `${it.card.name} ${it.card.setName} ${it.card.category} ${it.card.sku}`;
+    const c = it.card;
+    const haystack = `${c.name} ${c.setName} ${c.category} ${c.sku} ${c.setCode ?? ""} ${c.collectorNumber ?? ""} ${c.rarity ?? ""}`;
     return haystack.toLowerCase().includes(q);
   });
 }

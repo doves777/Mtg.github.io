@@ -16,13 +16,15 @@ The SaaS application itself is only just beginning (a starter scaffold in `app/`
   - `00-product-overview.md`, `08`–`13` (AI, NFRs, MVP scope, user stories, risks, roadmap).
   - `features/01`–`07` — per-feature docs (inventory, pricing, orders, POS, events, customer, buylist).
   - `_feature-template.md` — copy this to add a new feature doc.
-  - `discovery/` — customer-discovery kit (interview guide, screener, notes template, tracker, findings). *May be in an open PR, not yet merged.*
-  - `competitive-review.md` — market competitive analysis. *May be in an open PR.*
-- `docs/architecture/` — architecture decision records (ADRs) for the SaaS. *May be in an open PR.*
-- `app/` — minimal offline-first Next.js scaffold for the SaaS. *May be in an open PR.*
+  - `discovery/` — customer-discovery kit (interview guide, screener, notes template, tracker, findings).
+  - `competitive-review.md` — market competitive analysis.
+  - `competitor-parity-storepass.md` — Storepass feature→requirement map (*open PR #8 if not yet merged*).
+  - `features/08`–`09` — Store Credit (`SC`) + Storefront (`STF`), marked Later (*open PR #8*).
+- `docs/architecture/` — ADRs + `data-model/` (MTG single + sealed selling models; *data-model updates may be in open PR #9*).
+- `app/` — Next.js offline-first scaffold + **tablet convention POS prototype** at `/pos` (*POS polish/images may be in open PR #10*).
 - `index.html`, `_layouts/` — legacy Jekyll site (leave alone).
 
-> Because several deliverables are developed as separate PRs, don't assume `docs/discovery`, `docs/architecture`, or `app/` exist on `master` — check the working tree / open PRs first.
+> Some follow-on work still lands via draft PRs. Check `gh pr list` / open PRs before assuming a path exists on `master`.
 
 ## Documentation conventions
 
@@ -67,6 +69,8 @@ Services in this repo:
 - No `_config.yml` → Jekyll prints `Configuration file: none` (expected, not an error).
 - No automated tests or lint tooling. `_layouts/default.html` references CSS/pages that don't exist yet (`/css/main.css`, `/about`, etc.) → those 404 by design.
 
-**SaaS app scaffold** (`app/`, if present — introduced in an app-scaffold PR):
+**SaaS app scaffold** (`app/`, if present):
 - Node 22 is preinstalled. Run: `cd app && npm install` then `npm run dev` (http://localhost:3000). Checks: `npm run typecheck`, `npm run lint`, `npm run build`.
-- The scaffold runs with **zero external services** (in-memory + local-store stubs, clearly labeled as swap-in points for real Postgres/auth). The offline "hello world" flow lives at `/pos` (search cached inventory → add to cart → complete order offline → queued locally → **Sync now** flushes the queue).
+- The scaffold runs with **zero external services** (in-memory + local-store stubs). Full convention POS demo steps live in [`app/README.md`](./app/README.md) (**Revive the convention POS demo later**).
+- `/pos` = tablet booth flow: search MTG cards (Scryfall art) → cart → cash/card checkout → receipt; orders queue offline-safe. `/storefront` = buyer browse stub.
+- Card images are loaded from `cards.scryfall.io` (needs network once; then browser-cached).
