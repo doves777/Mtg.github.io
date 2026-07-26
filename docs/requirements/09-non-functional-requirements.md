@@ -43,6 +43,12 @@
 - [ ] Clear offline indicators.
 - [ ] Minimal manual entry during checkout.
 
+## Internationalization & Hardware
+
+- [ ] Multi-currency support.
+- [ ] Multi-language / localization (including buylist and storefront).
+- [ ] Support common retail peripherals (receipt printer, cash drawer, barcode scanner, card terminal) — see `POS-18`.
+
 ## Additional Details
 
 _Add measurable targets (e.g. search latency, uptime), compliance needs, and testing strategy here._

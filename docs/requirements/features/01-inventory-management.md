@@ -26,6 +26,8 @@ Vendors need one reliable catalog of cards that stays accurate as items are adde
 - [ ] **INV-8** — Update inventory when orders are created, completed, canceled, or refunded.
 - [ ] **INV-9** — Flag low-stock or sold-out items.
 - [ ] **INV-10** — Support reserved inventory for online pickup orders.
+- [ ] **INV-11** — Provide a managed card catalog for major TCGs (product data, images, set/rarity/variant metadata) so vendors don't hand-enter every card.
+- [ ] **INV-12** — Automatically create products for new set releases (day-one/release workflows), with optional manual review, plus custom/other product lines.
 
 ## Acceptance Criteria
 

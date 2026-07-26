@@ -51,6 +51,8 @@ Everything else should support that flow.
 - Advanced buylist optimization
 - Grading company integrations
 - Accounting integrations
+- Store credit & customer accounts (`SC`)
+- Customer storefront & merchandising (`STF`)
 
 ## Additional Details
 

@@ -35,6 +35,13 @@ Checkout must be fast, low-click, and dependable on tablets, laptops, and phones
 - [ ] **POS-14** — Prevent or flag possible overselling when offline.
 - [ ] **POS-15** — Resolve conflicts when multiple employees sell the same item offline.
 
+### Registers, Tender & Hardware
+
+- [ ] **POS-16** — Support split tender (combine cash, card, and store credit on a single sale).
+- [ ] **POS-17** — Support register/till management: multiple tills per location, per-till and per-cashier tracking, and change-due calculation.
+- [ ] **POS-18** — Support common POS hardware: receipt printer, cash drawer, barcode scanner, and card terminal.
+- [ ] **POS-19** — Accept store credit as a tender and show the customer's available balance at checkout (see [Store Credit `SC`](./08-store-credit-and-accounts.md)).
+
 ## Acceptance Criteria
 
 > Add acceptance criteria per requirement using its ID.
