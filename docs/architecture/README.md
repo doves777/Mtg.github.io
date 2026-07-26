@@ -32,6 +32,13 @@ decision. We follow a lightweight version of the classic
 | [0001](./0001-tech-stack.md) | Platform technology stack | Accepted |
 | [0002](./0002-offline-sync.md) | Offline-first sync strategy | Accepted |
 
+## Data models
+
+Domain data-model references (shapes/fields/examples, not decisions) live in [`data-model/`](./data-model/README.md):
+
+- [Card — MTG](./data-model/card-mtg.md) — single card (printing + shared inventory), selling-focused.
+- [Sealed Product — MTG](./data-model/sealed-product-mtg.md) — boxes, bundles, decks/kits, packs.
+
 ## Related
 
 - Product overview — [`../requirements/00-product-overview.md`](../requirements/00-product-overview.md)
