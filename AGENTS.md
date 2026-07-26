@@ -49,6 +49,7 @@ Link-check pattern used previously: verify every relative `](./...md)` / `](../.
 
 ## Working conventions (git / PR workflow)
 
+- **Lightweight by default.** For simple adds/edits (requirements, AC, seed data, small UI), follow [`.cursor/skills/lightweight-changes/SKILL.md`](./.cursor/skills/lightweight-changes/SKILL.md) — skip screen recordings, browser demos, and parallel agents unless the user asks or it's a new end-to-end flow.
 - **One logical change per branch/PR.** Docs deliverables here have each been their own PR (discovery, competitive review, acceptance criteria, architecture+app).
 - **Branch naming**: `cursor/<descriptive-name>-7d43` (lowercase). Base off latest `master`.
 - **PRs are draft by default.** Do **not** merge or mark ready unless explicitly asked — the human merges. The available `gh` CLI here is read-only; use the PR tool for create/update.
