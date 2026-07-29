@@ -17,7 +17,7 @@ Keyboard: **← / →** to navigate. Use **Prev / Next** on mobile.
 1. Cover — THE MILLION
 2. Market opportunity (50M+ fans, $1.72B FY2025 brand revenue, 13M Arena)
 3. Why now (prize-pool precedent + independent packaging lane)
-4. Event snapshot ($1M / 64→1 / 3-day finals)
+4. Event snapshot (**open field · direct buy-ins · Swiss → Top 8**)
 5. Audience & sponsor-fit verticals
 6. Production & spectacle
 7. Year-1 reach targets
@@ -53,7 +53,7 @@ A $1,000,000 Magic: The Gathering championship built for brands that want cultur
 Official World Championships have proven ~$1M purses; independent organizers can sell title rights, hospitality, creator talent, and retail activations as a bundle.
 
 ### Slide 4 — Event
-$1,000,000 prize pool · 64 → 1 invitational · 3-day live finals · hybrid online qualifiers.
+$1,000,000 guaranteed prize pool · **one large open** with **direct buy-ins** · Swiss → televised Top 8.
 
 ### Slides 5–7 — Audience / production / reach
 See HTML for full wording. Year-1 planning targets: 2M+ live+VOD views, 50+ creators, 10K+ on-site.
