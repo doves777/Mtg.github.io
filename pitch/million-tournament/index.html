@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>THE MILLION — Sponsor Pitch Deck</title>
+  <meta name="description" content="Sponsorship opportunity: a $1,000,000 Magic: The Gathering championship built for global brands." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #10221c;
+      --ink-soft: #2a3f37;
+      --mist: #d7e3dd;
+      --paper: #eef4f0;
+      --mint: #0b8f63;
+      --mint-bright: #12b87a;
+      --gold: #b8923f;
+      --line: rgba(16, 34, 28, 0.12);
+      --shadow: 0 24px 60px rgba(16, 34, 28, 0.08);
+      --slide-pad: clamp(1.5rem, 4vw, 4rem);
+      --max: 1100px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Figtree", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .deck {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      align-content: center;
+      padding: var(--slide-pad);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(18px);
+      transition: opacity 0.45s ease, transform 0.45s ease, visibility 0.45s;
+      overflow: hidden;
+    }
+
+    .slide.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      z-index: 2;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 100% 0%, rgba(18, 184, 122, 0.14), transparent 55%),
+        radial-gradient(ellipse 70% 50% at 0% 100%, rgba(184, 146, 63, 0.10), transparent 50%),
+        linear-gradient(160deg, #f5f9f6 0%, #e7efe9 48%, #dfeae3 100%);
+      z-index: -2;
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(16, 34, 28, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 34, 28, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black, transparent 85%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .slide-inner {
+      width: min(100%, var(--max));
+      margin: 0 auto;
+      animation: rise 0.55s ease both;
+    }
+
+    .slide.is-active .slide-inner { animation-name: rise; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+      50% { transform: translate3d(-2%, 1.5%, 0) scale(1.04); }
+    }
+
+    .brand {
+      font-family: "Syne", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+      text-transform: uppercase;
+    }
+
+    .kicker {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 1rem;
+    }
+
+    h1.brand {
+      font-size: clamp(3.4rem, 11vw, 7.5rem);
+      max-width: 12ch;
+    }
+
+    h2 {
+      font-family: "Syne", sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.05;
+      margin-bottom: 0.85rem;
+      max-width: 18ch;
+    }
+
+    .lede {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      line-height: 1.45;
+      color: var(--ink-soft);
+      max-width: 42ch;
+      font-weight: 500;
+    }
+
+    .sub {
+      margin-top: 1.25rem;
+      font-size: 1rem;
+      color: var(--ink-soft);
+      max-width: 48ch;
+      line-height: 1.55;
+    }
+
+    .hero-slide .slide-inner {
+      display: grid;
+      gap: 1.5rem;
+      align-items: end;
+      min-height: min(72vh, 640px);
+    }
+
+    .hero-slide::before {
+      background:
+        radial-gradient(ellipse 90% 70% at 70% 20%, rgba(18, 184, 122, 0.22), transparent 50%),
+        radial-gradient(ellipse 60% 50% at 10% 90%, rgba(16, 34, 28, 0.12), transparent 45%),
+        linear-gradient(145deg, #ecf4ef 0%, #d5e5dc 55%, #c7d9cf 100%);
+      animation: drift 18s ease-in-out infinite;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.75rem;
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+
+    .hero-meta span {
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .hero-meta span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.45em;
+      width: 0.45rem;
+      height: 0.45rem;
+      background: var(--mint);
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      border-top: 2px solid var(--ink);
+      padding-top: 0.85rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-family: "Syne", sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat span {
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      line-height: 1.35;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+    }
+
+    .list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.75rem;
+      align-items: start;
+      font-size: 1.02rem;
+      line-height: 1.4;
+      color: var(--ink-soft);
+    }
+
+    .list li::before {
+      content: "";
+      width: 0.55rem;
+      height: 0.55rem;
+      margin-top: 0.45rem;
+      background: var(--mint);
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.45);
+      padding: 1.25rem 1.35rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .panel h3 {
+      font-family: "Syne", sans-serif;
+      font-size: 1.05rem;
+      margin-bottom: 0.55rem;
+      letter-spacing: -0.02em;
+    }
+
+    .panel p, .panel li {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.45;
+    }
+
+    .stack {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 0.25rem;
+    }
+
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .tier {
+      border-top: 3px solid var(--ink);
+      background: rgba(255, 255, 255, 0.5);
+      padding: 1.15rem 1.1rem 1.3rem;
+      min-height: 100%;
+    }
+
+    .tier.featured {
+      border-top-color: var(--mint);
+      background: rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+    }
+
+    .tier .label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 0.4rem;
+    }
+
+    .tier h3 {
+      font-family: "Syne", sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+
+    .tier .price {
+      font-family: "Syne", sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.85rem;
+    }
+
+    .tier ul {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+    }
+
+    .tier li {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.35;
+      padding-left: 0.85rem;
+      position: relative;
+    }
+
+    .tier li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--ink);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 0;
+      margin-top: 1.75rem;
+      border-left: 2px solid var(--ink);
+      padding-left: 1.25rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0.65rem 0 1.1rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.5rem;
+      top: 0.95rem;
+      width: 0.65rem;
+      height: 0.65rem;
+      background: var(--mint);
+      border: 2px solid var(--paper);
+    }
+
+    .timeline-item strong {
+      display: block;
+      font-family: "Syne", sans-serif;
+      font-size: 1.05rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-item span {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+    }
+
+    .ask-box {
+      margin-top: 1.75rem;
+      display: grid;
+      gap: 0.75rem;
+      max-width: 36rem;
+    }
+
+    .ask-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.65rem;
+      font-size: 1.02rem;
+    }
+
+    .ask-line strong {
+      font-family: "Syne", sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    .contact {
+      margin-top: 2rem;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+    }
+
+    .contact a {
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid var(--mint);
+    }
+
+    .footnote {
+      margin-top: 1.5rem;
+      font-size: 0.78rem;
+      color: rgba(16, 34, 28, 0.55);
+      max-width: 62ch;
+      line-height: 1.4;
+    }
+
+    .chrome {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem var(--slide-pad) 1.1rem;
+      background: linear-gradient(to top, rgba(238, 244, 240, 0.95), rgba(238, 244, 240, 0));
+      pointer-events: none;
+    }
+
+    .chrome > * { pointer-events: auto; }
+
+    .progress {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: rgba(16, 34, 28, 0.08);
+    }
+
+    .progress > i {
+      display: block;
+      height: 100%;
+      width: 0%;
+      background: var(--mint);
+      transition: width 0.35s ease;
+    }
+
+    .nav {
+      display: flex;
+      gap: 0.5rem;
+      margin-left: auto;
+    }
+
+    .nav button {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.7);
+      color: var(--ink);
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.55rem 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav button:hover {
+      background: #fff;
+      border-color: rgba(16, 34, 28, 0.25);
+    }
+
+    .nav button:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+
+    .counter {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--ink-soft);
+    }
+
+    .hint {
+      font-size: 0.75rem;
+      color: rgba(16, 34, 28, 0.45);
+      display: none;
+    }
+
+    @media (min-width: 720px) {
+      .hint { display: block; }
+    }
+
+    @media (max-width: 820px) {
+      .two-col,
+      .stat-row,
+      .tiers {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-slide .slide-inner {
+        min-height: auto;
+      }
+
+      h1.brand {
+        font-size: clamp(3rem, 16vw, 4.8rem);
+      }
+    }
+
+    @media print {
+      body { overflow: visible; background: white; }
+      .chrome { display: none; }
+      .slide {
+        position: relative;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        page-break-after: always;
+        min-height: 100vh;
+      }
+      .slide::before { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck" aria-live="polite">
+
+    <!-- 1. Cover -->
+    <section class="slide hero-slide is-active" data-title="Cover">
+      <div class="slide-inner">
+        <div>
+          <p class="kicker">Confidential sponsor briefing</p>
+          <h1 class="brand">The Million</h1>
+          <p class="lede" style="margin-top: 1.1rem;">A $1,000,000 Magic: The Gathering open championship — direct buy-in, one massive field — built for brands that want culture, competition, and measurable reach.</p>
+          <div class="hero-meta">
+            <span>$1M guaranteed prize pool</span>
+            <span>Open field · direct buy-ins</span>
+            <span>Live finals + global stream</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Opportunity -->
+    <section class="slide" data-title="Opportunity">
+      <div class="slide-inner">
+        <p class="kicker">The market</p>
+        <h2>Magic is a global entertainment franchise — not a niche hobby.</h2>
+        <p class="sub">Sponsors get access to a passionate, high-intent audience that already spends on digital platforms, live events, collectibles, and lifestyle brands.</p>
+        <div class="stat-row">
+          <div class="stat">
+            <strong>50M+</strong>
+            <span>Fans worldwide across tabletop &amp; digital</span>
+          </div>
+          <div class="stat">
+            <strong>$1.72B</strong>
+            <span>Total Magic brand revenue in FY2025 (Hasbro)</span>
+          </div>
+          <div class="stat">
+            <strong>13M</strong>
+            <span>Registered Magic: The Gathering Arena players</span>
+          </div>
+        </div>
+        <p class="footnote">Sources: Hasbro investor materials (Magic brand overview). Figures cited for market context; independent event is not affiliated with Wizards of the Coast / Hasbro unless separately licensed.</p>
+      </div>
+    </section>
+
+    <!-- 3. Why now -->
+    <section class="slide" data-title="Why now">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="kicker">Why now</p>
+          <h2>The gap: prestige prize money without a brand-native platform.</h2>
+          <p class="sub">Official World Championship events have reached ~$1M purses — then contracted. Players, creators, and fans still want a marquee destination. Brands want ownership of the story, not a logo in the corner of someone else’s broadcast.</p>
+        </div>
+        <div class="stack">
+          <div class="panel">
+            <h3>Proven ceiling</h3>
+            <p>Magic World Championship XXVI/XXVII posted $1.0M–$1.05M prize pools — proof the category can carry seven-figure stakes.</p>
+          </div>
+          <div class="panel">
+            <h3>Open lane</h3>
+            <p>Independent organizers can package title rights, hospitality, creator talent, and retail activations that official circuits rarely sell as a bundle.</p>
+          </div>
+          <div class="panel">
+            <h3>Culture moment</h3>
+            <p>Universes Beyond crossovers and record set interest have pulled new audiences into Magic — ideal timing for mainstream brand entry.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Event snapshot -->
+    <section class="slide" data-title="Event">
+      <div class="slide-inner">
+        <p class="kicker">Event concept</p>
+        <h2>THE MILLION — one open, one buy-in, one champion.</h2>
+        <div class="stat-row">
+          <div class="stat">
+            <strong>$1,000,000</strong>
+            <span>Guaranteed prize pool for the main event</span>
+          </div>
+          <div class="stat">
+            <strong>Open field</strong>
+            <span>Anyone eligible can buy in directly — no invite gate</span>
+          </div>
+          <div class="stat">
+            <strong>Swiss → Top 8</strong>
+            <span>Multi-day open into a televised finals Sunday</span>
+          </div>
+        </div>
+        <ul class="list">
+          <li>Single flagship tournament: published direct buy-in, large paper field, Competitive-grade operations.</li>
+          <li>Constructed format chosen for spectator clarity and creator-friendly coverage.</li>
+          <li>Fan floor, side events, and partner activations around the main event — not instead of it.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. Audience -->
+    <section class="slide" data-title="Audience">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="kicker">Audience</p>
+          <h2>Who shows up — and who watches.</h2>
+          <p class="sub">Magic’s core is strategic, adult, and brand-receptive: collectors, digital natives, and live-event travelers who follow creators as closely as they follow the metagame.</p>
+        </div>
+        <div class="stack">
+          <div class="panel">
+            <h3>Player profile</h3>
+            <p>Average tabletop player ~30; majority aged 13–45. Mix of lifelong fans and recent converts (roughly equal thirds under 3 / up to 10 / 10+ years).</p>
+          </div>
+          <div class="panel">
+            <h3>Sponsor-fit verticals</h3>
+            <p>Consumer tech, financial services, energy &amp; lifestyle beverages, peripherals, travel, telecom, and premium consumer brands seeking cultural credibility with 18–44 audiences.</p>
+          </div>
+          <div class="panel">
+            <h3>Engagement style</h3>
+            <p>High dwell-time streams, Discord communities, and local game-store networks that amplify partner offers beyond the weekend itself.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Format & spectacle -->
+    <section class="slide" data-title="Spectacle">
+      <div class="slide-inner">
+        <p class="kicker">Production</p>
+        <h2>Designed like a championship, not a local FNM.</h2>
+        <ul class="list">
+          <li><strong style="color:var(--ink)">Broadcast-first stage</strong> — feature matches, player cams, analyst desk, and highlight packages built for Twitch/YouTube clips.</li>
+          <li><strong style="color:var(--ink)">Creator lane</strong> — invite watch-party talent and co-streamers with sponsor-safe integration windows.</li>
+          <li><strong style="color:var(--ink)">Fan floor</strong> — side events, meet-and-greets, retail demo pods, and partner experiential builds.</li>
+          <li><strong style="color:var(--ink)">Press &amp; prestige</strong> — media day, champion crowning moment, and season-long content recap series.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 7. Media & reach -->
+    <section class="slide" data-title="Reach">
+      <div class="slide-inner">
+        <p class="kicker">Distribution</p>
+        <h2>Reach targets for Year One.</h2>
+        <div class="stat-row">
+          <div class="stat">
+            <strong>2M+</strong>
+            <span>Combined live + VOD views across official channels (Year-1 target)</span>
+          </div>
+          <div class="stat">
+            <strong>50+</strong>
+            <span>Creator / co-stream partners activated around the weekend</span>
+          </div>
+          <div class="stat">
+            <strong>10K+</strong>
+            <span>On-site fan &amp; competitor traffic across championship weekend</span>
+          </div>
+        </div>
+        <p class="sub" style="margin-top: 1.75rem;">Targets are planning goals for sponsorship modeling — final KPIs locked in the partnership agreement with monthly reporting and post-event wrap.</p>
+      </div>
+    </section>
+
+    <!-- 8. Tiers -->
+    <section class="slide" data-title="Tiers">
+      <div class="slide-inner">
+        <p class="kicker">Partnership packages</p>
+        <h2>Choose your altitude.</h2>
+        <div class="tiers">
+          <article class="tier featured">
+            <p class="label">Title</p>
+            <h3>Presenting Partner</h3>
+            <p class="price">$750K+</p>
+            <ul>
+              <li>“Brand presents THE MILLION” naming</li>
+              <li>Primary stage &amp; broadcast lockup</li>
+              <li>Hero integration in all trailers</li>
+              <li>Hospitality suite + 20 VIP credentials</li>
+              <li>Custom activation build on fan floor</li>
+              <li>First right of refusal Year 2</li>
+            </ul>
+          </article>
+          <article class="tier">
+            <p class="label">Official</p>
+            <h3>Championship Partners</h3>
+            <p class="price">$250–400K</p>
+            <ul>
+              <li>Category exclusivity</li>
+              <li>Feature-match table branding</li>
+              <li>Mid-roll &amp; lower-third packages</li>
+              <li>Player jersey / desk placements</li>
+              <li>8 VIP credentials + product seeding</li>
+              <li>Post-event content rights</li>
+            </ul>
+          </article>
+          <article class="tier">
+            <p class="label">Supporting</p>
+            <h3>Official Suppliers</h3>
+            <p class="price">$75–150K</p>
+            <ul>
+              <li>Logo in broadcast end-boards</li>
+              <li>Social takeover windows</li>
+              <li>Side-event naming rights</li>
+              <li>Booth or demo pod option</li>
+              <li>4 staff credentials</li>
+              <li>Lead-gen QR / offer capture</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Integrations -->
+    <section class="slide" data-title="Integrations">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="kicker">Brand integration</p>
+          <h2>More than a logo — moments audiences remember.</h2>
+        </div>
+        <ul class="list" style="margin-top:0;">
+          <li>Champion trophy &amp; winner’s interview presented by your brand</li>
+          <li>Draft or sealed “sponsor challenge” side event with prize boosts</li>
+          <li>Creator briefing kits and safe talking points for co-streamers</li>
+          <li>Employee / customer hospitality program for B2B partners</li>
+          <li>Retail or product sampling tied to local game stores post-event</li>
+          <li>Optional cause overlay (youth STEM / literacy) for CSR narratives</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 10. Use of funds -->
+    <section class="slide" data-title="Budget">
+      <div class="slide-inner">
+        <p class="kicker">Investment model</p>
+        <h2>Where the money goes.</h2>
+        <div class="stat-row">
+          <div class="stat">
+            <strong>40%</strong>
+            <span>Prize pool capitalization &amp; player appearance support</span>
+          </div>
+          <div class="stat">
+            <strong>30%</strong>
+            <span>Broadcast, stage, venue, and production crew</span>
+          </div>
+          <div class="stat">
+            <strong>30%</strong>
+            <span>Marketing, talent, operations, contingency</span>
+          </div>
+        </div>
+        <p class="sub">Illustrative Year-1 allocation for a ~$2.5M total event budget. Title + official partners cover the majority of cash needs; ticketing, media, and merchandise fill the remainder.</p>
+      </div>
+    </section>
+
+    <!-- 11. Timeline -->
+    <section class="slide" data-title="Timeline">
+      <div class="slide-inner two-col">
+        <div>
+          <p class="kicker">Roadmap</p>
+          <h2>From LOI to lights-up.</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <strong>Months 0–2</strong>
+            <span>Title partner LOI, venue shortlist, format lock, legal / insurance scaffold</span>
+          </div>
+          <div class="timeline-item">
+            <strong>Months 3–5</strong>
+            <span>Buy-in registration open, creator roster, broadcast RFP, hotel block</span>
+          </div>
+          <div class="timeline-item">
+            <strong>Months 6–8</strong>
+            <span>Full partner integrations, media tour, production rehearsals</span>
+          </div>
+          <div class="timeline-item">
+            <strong>Championship weekend</strong>
+            <span>Live finals, hospitality, global stream, same-day highlight package</span>
+          </div>
+          <div class="timeline-item">
+            <strong>Post-event</strong>
+            <span>KPI wrap, content evergreen, Year-2 renewal conversation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. Why sponsors win -->
+    <section class="slide" data-title="Why you">
+      <div class="slide-inner">
+        <p class="kicker">Sponsor outcomes</p>
+        <h2>What success looks like for your brand.</h2>
+        <ul class="list">
+          <li><strong style="color:var(--ink)">Category ownership</strong> — be the brand that “owns” Magic’s biggest independent prize moment.</li>
+          <li><strong style="color:var(--ink)">Cultural proof</strong> — authentic presence with creators and competitive players, not interruptive ads alone.</li>
+          <li><strong style="color:var(--ink)">Measurable funnel</strong> — tracked codes, QR offers, CRM capture, and viewership dashboards.</li>
+          <li><strong style="color:var(--ink)">Hospitality leverage</strong> — VIP access for clients, employees, and partners at a prestige event.</li>
+          <li><strong style="color:var(--ink)">Multi-year equity</strong> — Year-1 partners shape the property’s visual identity and renewal terms.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 13. Ask -->
+    <section class="slide" data-title="The ask">
+      <div class="slide-inner">
+        <p class="kicker">Next step</p>
+        <h2>We’re raising the championship — with you.</h2>
+        <div class="ask-box">
+          <div class="ask-line"><span>Title / Presenting Partner</span><strong>1 seat</strong></div>
+          <div class="ask-line"><span>Official Championship Partners</span><strong>3–4 seats</strong></div>
+          <div class="ask-line"><span>Supporting Suppliers</span><strong>6–8 seats</strong></div>
+        </div>
+        <p class="sub">Ideal first conversation: 30-minute briefing → custom integration memo → LOI within 30 days.</p>
+        <p class="contact">
+          Partnerships — Andrew Hung<br />
+          <a href="mailto:drewsmith99yahoo@gmail.com">drewsmith99yahoo@gmail.com</a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="chrome">
+    <div class="counter"><span id="current">1</span> / <span id="total">13</span></div>
+    <p class="hint">← → or click buttons · P to print/PDF</p>
+    <div class="nav">
+      <button type="button" id="prev" aria-label="Previous slide">Prev</button>
+      <button type="button" id="next" aria-label="Next slide">Next</button>
+    </div>
+    <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll(".slide"));
+      const total = slides.length;
+      const currentEl = document.getElementById("current");
+      const totalEl = document.getElementById("total");
+      const bar = document.getElementById("bar");
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      let index = 0;
+
+      totalEl.textContent = String(total);
+
+      function show(i) {
+        index = Math.max(0, Math.min(total - 1, i));
+        slides.forEach((s, n) => s.classList.toggle("is-active", n === index));
+        currentEl.textContent = String(index + 1);
+        bar.style.width = ((index + 1) / total) * 100 + "%";
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === total - 1;
+        history.replaceState(null, "", "#" + (index + 1));
+      }
+
+      function fromHash() {
+        const n = parseInt(location.hash.replace("#", ""), 10);
+        if (!isNaN(n)) show(n - 1);
+        else show(0);
+      }
+
+      prevBtn.addEventListener("click", () => show(index - 1));
+      nextBtn.addEventListener("click", () => show(index + 1));
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+          e.preventDefault();
+          show(index + 1);
+        } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+          e.preventDefault();
+          show(index - 1);
+        } else if (e.key === "Home") {
+          show(0);
+        } else if (e.key === "End") {
+          show(total - 1);
+        } else if (e.key.toLowerCase() === "p" && (e.metaKey || e.ctrlKey) === false && !e.altKey) {
+          // bare P opens print for PDF export
+          if (document.activeElement === document.body || document.activeElement === null) {
+            /* allow default only via hint — skip auto */
+          }
+        }
+      });
+
+      window.addEventListener("hashchange", fromHash);
+      fromHash();
+    })();
+  </script>
+</body>
+</html>
