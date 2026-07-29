@@ -2,6 +2,8 @@
 
 Pitch deck and research notes for **getting written authorization from Wizards of the Coast** before planning a $1,000,000 Magic championship.
 
+**Format assumption:** one **large open** main event with **direct buy-ins** (not an invitational / qualifier ladder). Closest historic parallels: Grand Prix main events and independent Opens.
+
 **Open the deck:** [`pitch/wotc-approval/index.html`](../../pitch/wotc-approval/index.html)  
 **Send path (public):** [tournaments@wizards.com](mailto:tournaments@wizards.com)  
 **PDF:** open HTML → Print → Save as PDF
@@ -10,7 +12,7 @@ Pitch deck and research notes for **getting written authorization from Wizards o
 
 ## Bottom line
 
-Under Wizards’ public **Community Tournament Guidelines**, you may run a small community event **without a license** only if you stay inside hard caps — including a **$5,000 maximum** on all payments to participants and a **$25 maximum** entry fee. A **$1,000,000** prize event is far outside those caps and **requires prior written permission**. Do not announce, sell sponsorships, or open registration until that writing exists.
+Under Wizards’ public **Community Tournament Guidelines**, you may run a small community event **without a license** only if you stay inside hard caps — including a **$5,000 maximum** on all payments to participants and a **$25 maximum** entry fee. A **$1,000,000** open tournament with a real direct buy-in is far outside those caps and **requires prior written permission** (prize *and* entry). Do not announce, sell sponsorships, or open registration until that writing exists.
 
 ---
 
@@ -35,14 +37,17 @@ In **2017**, Wizards announced that from **2018** **ChannelFireball Events (CFBE
 
 **Implication:** flagship paper events at GP scale were treated as a **partner appointment**, not an open franchise anyone could claim.
 
-### 3. Independent large cash series (with careful non-affiliation)
+### 3. Independent series with coordination
 
 Operators such as **StarCityGames** historically ran large **Open** series that:
 
+- Used **open registration + direct entry fees** (the same structural idea as THE MILLION)  
 - Paid substantial cash outside the official Pro Tour / GP purse structure  
 - Used Magic rules culture (Competitive REL norms, judge staff, DCI/Wizards suspension respect)  
 - Positioned themselves as **complementing** Organized Play, not as official Wizards championships  
 - Avoided claiming Wizards sponsorship/endorsement without permission  
+
+Grand Prix main events were also **open + buy-in** at public scale when they existed — but under Wizards’ Premier / partner umbrella, not as self-declared community events.
 
 Some independent organizers later became **official partners** for pieces of the modern Premier structure (e.g. Regional Championship hosting). That is a negotiated relationship, not a default right.
 
@@ -56,14 +61,15 @@ Wizards’ **Community Tournament Guidelines** (primarily framed for community/A
 
 Triggers that push you into “need written permission” for something like THE MILLION include:
 
-| Constraint (public guidelines) | THE MILLION |
+| Constraint (public guidelines) | THE MILLION (open + buy-in) |
 | --- | --- |
-| Max **$5,000** total payments to participants (prizes, fees, travel, etc.) | **$1,000,000** prize pool |
-| Max **$25** entry fee | Likely higher for a championship weekend |
+| Max **$5,000** total payments to participants (prizes, fees, travel, etc.) | **$1,000,000** guaranteed prize pool |
+| Max **$25** entry fee | **Direct buy-in** almost certainly above $25 → needs waiver |
 | No paywalled broadcast; TV/other media need prior permission | Global production ambitions |
 | Cannot say the event is **sponsored by / official** Wizards without consent | Any official marks or co-branding |
 | **Sponsors subject to Wizards approval**; prohibited categories (other game companies, alcohol, tobacco, drugs, weapons, adult content, etc.) | Corporate title sponsors must be cleared |
 | No confusing use of Wizards trademarks / domains / social handles | Event naming + creative must be licensed or carefully non-infringing |
+| Competitors must not crowdfund the prize pool | Purse is **guaranteed/escrowed** up front; buy-ins are published entry, not mid-event crowdfunding |
 
 ### 6. Brand / marketing controls (always)
 
@@ -79,12 +85,13 @@ Even with operational skill, **IP use** is gated:
 
 Use the HTML deck as the leave-behind; attach or follow with:
 
-1. **Explicit asks** — prize-cap waiver; model A/B/C (licensed partner / Premier collaboration / authorized independent); mark license; sponsor + broadcast approval rights for Wizards  
-2. **Non-confusion plan** — naming, disclaimers, calendar vs Regional Championships / Spotlight Series  
-3. **Integrity plan** — Head Judge, MTR/IPG, suspension handling, escrowed prizes  
-4. **Brand-safety plan** — prohibited sponsor list adherence; Wizards veto  
-5. **Legal entity** — who is the organizer, insurance, indemnification  
-6. **No public sales until signed** — stated as a hard rule in the briefing  
+1. **Explicit asks** — prize-cap waiver; **entry-fee / direct buy-in waiver**; model A/B/C (licensed partner / Premier collaboration / authorized independent); mark license; sponsor + broadcast approval rights for Wizards  
+2. **Format sheet** — one open main event, Swiss → Top cut, published buy-in, guaranteed $1M escrow  
+3. **Non-confusion plan** — naming, disclaimers, calendar vs Regional Championships / Spotlight Series  
+4. **Integrity plan** — Head Judge, MTR/IPG, suspension handling, escrowed prizes  
+5. **Brand-safety plan** — prohibited sponsor list adherence; Wizards veto  
+6. **Legal entity** — who is the organizer, insurance, indemnification  
+7. **No public sales until signed** — stated as a hard rule in the briefing  
 
 ---
 
@@ -96,7 +103,7 @@ Use the HTML deck as the leave-behind; attach or follow with:
 4. What approval typically covers  
 5. Four-point ask  
 6. Models A / B / C  
-7. Event concept (pending approval)  
+7. Event concept — **open field, direct buy-in, Swiss → cut**  
 8. Brand protection  
 9. Competitive integrity checklist  
 10. Organized Play alignment  
