@@ -31,6 +31,7 @@ decision. We follow a lightweight version of the classic
 | --- | --- | --- |
 | [0001](./0001-tech-stack.md) | Platform technology stack | Accepted |
 | [0002](./0002-offline-sync.md) | Offline-first sync strategy | Accepted |
+| — | [Database hosting (Neon)](./database-hosting.md) | How-to: cloud Postgres + Drizzle POC |
 
 ## Data models
 
