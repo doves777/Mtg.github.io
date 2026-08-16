@@ -86,6 +86,7 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 
 - Center of gravity is still `docs/` (requirements, discovery, architecture). The app is an early scaffold + POS prototype.
 - **Shareable PRD** lives at `docs/prd.md` (POC → MVP → expand). The requirements library under `docs/requirements/` is the deeper breakdown — don’t fork a second full requirements tree when someone asks for a PRD.
+- **First live shows are Pokémon** — selling models live in `docs/architecture/data-model/card-pokemon.md` + `sealed-product-pokemon.md`. Same Product → Inventory pattern as MTG; Pokémon-specific fields include `printedNumber`, SV-era rarities (IR/SIR/HR), `reverse_holo`, and sealed types like `elite_trainer_box`.
 - Cloud Postgres how-to: `docs/architecture/database-hosting.md` (Neon + Drizzle). Agent cannot create the user’s Neon project — user pastes `DATABASE_URL`.
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
 - Check `gh pr list` / open PRs before assuming a path exists on `master`.
@@ -123,6 +124,12 @@ Newest first. Template:
 - **Skill/agent:** … (omit if none)
 ```
 
+### 2026-08-16 — Resolve PR #16 merge with master
+
+- **Done:** Merged `origin/master` (PRD + Neon/Drizzle) into `cursor/pokemon-data-model-4b7c`. Kept Pokémon, PRD, and Postgres standing notes plus all 2026-08-16 log entries.
+- **Lesson:** After sibling PRs merge, session-lessons is the only usual conflict — keep every standing bullet; do not open a second PR just to resolve it.
+- **Skill/agent:** Simple content conflict; architecture README auto-merged (hosting + Pokémon index).
+
 ### 2026-08-16 — Resolve PR #17 merge with master (PRD)
 
 - **Done:** Merged `origin/master` (PR #15 shareable PRD) into `cursor/cloud-postgres-setup-4b7c`. Kept both standing-lesson bullets and both 2026-08-16 session-log entries.
@@ -134,6 +141,12 @@ Newest first. Template:
 - **Done:** Added Drizzle schema (`tenants`, `products`, `inventory_items`), Neon how-to (`docs/architecture/database-hosting.md`), `db:push`/`seed`/`ping` scripts; verified against local Postgres (seeded 3 Pokémon rows). App still runs without `DATABASE_URL`.
 - **Lesson:** Agent cannot create the user’s Neon account — ship schema + docs; user pastes pooled `DATABASE_URL`. `drizzle-kit push` needs `--force` (or a TTY) in non-interactive agents. Prefer `postgres` (postgres.js) driver — works for both Neon and local Postgres.
 - **Skill/agent:** Branch suffix `-4b7c`. Do not commit `.env.local`.
+
+### 2026-08-16 — Pokémon selling data models
+
+- **Done:** Added `card-pokemon.md` + `sealed-product-pokemon.md`; indexed in data-model + architecture READMEs. Same Product → Inventory pattern as MTG; Pokémon deltas = printed number, SV rarities, reverse holo, ETB/sealed taxonomy, EN/JA language split.
+- **Lesson:** First shows are Pokémon — prefer those models for POC catalog/seed work. Don’t invent a parallel inventory shape; only the product-layer game fields change. Separate PR from the shareable PRD (`cursor/shareable-prd-poc-4b7c`).
+- **Skill/agent:** Lightweight docs-only; Cloud branch suffix `-4b7c`.
 
 ### 2026-08-16 — Shareable POC-first PRD
 

@@ -20,7 +20,7 @@ The SaaS application itself is only just beginning (a starter scaffold in `app/`
   - `competitive-review.md` — market competitive analysis.
   - `competitor-parity-storepass.md` — Storepass feature→requirement map (*open PR #8 if not yet merged*).
   - `features/08`–`09` — Store Credit (`SC`) + Storefront (`STF`), marked Later (*open PR #8*).
-- `docs/architecture/` — ADRs + `data-model/` (MTG single + sealed selling models; *data-model updates may be in open PR #9*).
+- `docs/architecture/` — ADRs + `data-model/` (MTG + Pokémon single/sealed selling models; first live shows are Pokémon).
 - `app/` — Next.js offline-first scaffold + **tablet convention POS prototype** at `/pos` (*POS polish/images may be in open PR #10*).
 - `index.html`, `_layouts/` — legacy Jekyll site (leave alone).
 
