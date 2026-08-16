@@ -84,6 +84,7 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 ### Product / repo map (easy to miss)
 
 - Center of gravity is still `docs/` (requirements, discovery, architecture). The app is an early scaffold + POS prototype.
+- **First live shows are Pokémon** — selling models live in `docs/architecture/data-model/card-pokemon.md` + `sealed-product-pokemon.md`. Same Product → Inventory pattern as MTG; Pokémon-specific fields include `printedNumber`, SV-era rarities (IR/SIR/HR), `reverse_holo`, and sealed types like `elite_trainer_box`.
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
 - Check `gh pr list` / open PRs before assuming a path exists on `master`.
 
@@ -119,6 +120,12 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-08-16 — Pokémon selling data models
+
+- **Done:** Added `card-pokemon.md` + `sealed-product-pokemon.md`; indexed in data-model + architecture READMEs. Same Product → Inventory pattern as MTG; Pokémon deltas = printed number, SV rarities, reverse holo, ETB/sealed taxonomy, EN/JA language split.
+- **Lesson:** First shows are Pokémon — prefer those models for POC catalog/seed work. Don’t invent a parallel inventory shape; only the product-layer game fields change. Separate PR from the shareable PRD (`cursor/shareable-prd-poc-4b7c`).
+- **Skill/agent:** Lightweight docs-only; Cloud branch suffix `-4b7c`.
 
 ### 2026-08-15 — Add living session-lessons skill
 

@@ -38,6 +38,8 @@ Domain data-model references (shapes/fields/examples, not decisions) live in [`d
 
 - [Card — MTG](./data-model/card-mtg.md) — single card (printing + shared inventory), selling-focused.
 - [Sealed Product — MTG](./data-model/sealed-product-mtg.md) — boxes, bundles, decks/kits, packs.
+- [Card — Pokémon](./data-model/card-pokemon.md) — Pokémon TCG singles (first live shows).
+- [Sealed Product — Pokémon](./data-model/sealed-product-pokemon.md) — ETBs, booster boxes/packs, collections, tins.
 
 ## Related
 

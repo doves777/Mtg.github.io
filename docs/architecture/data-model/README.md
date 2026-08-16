@@ -11,9 +11,11 @@ Product (productType: single_card | sealed_product)
    └──< InventoryItem   (a vendor's copy: condition, price, qty, location)
 ```
 
-- A **Product** is the catalog identity of a sellable thing. Its attributes vary by `productType`:
-  - `single_card` → a specific printing of a card. See [Card — MTG](./card-mtg.md).
-  - `sealed_product` → boxes, bundles, decks/kits, packs. See [Sealed Product — MTG](./sealed-product-mtg.md).
+- A **Product** is the catalog identity of a sellable thing. Its attributes vary by `productType` **and** `game`:
+  - `single_card` + `MTG` → [Card — MTG](./card-mtg.md)
+  - `single_card` + `Pokemon` → [Card — Pokémon](./card-pokemon.md) *(first live shows)*
+  - `sealed_product` + `MTG` → [Sealed Product — MTG](./sealed-product-mtg.md)
+  - `sealed_product` + `Pokemon` → [Sealed Product — Pokémon](./sealed-product-pokemon.md)
 - An **Inventory item** is one vendor's copy offered for sale. It shares the same shape for every product type (below), which is what the [Inventory](../../requirements/features/01-inventory-management.md) requirements track.
 
 ### Shared: Inventory item
@@ -24,7 +26,7 @@ Product (productType: single_card | sealed_product)
 | `productId` | _(fk)_ | points at a single_card or sealed_product |
 | `vendorId` | _(tenant)_ | multi-tenant |
 | `condition` | `LP` / `Unopened` | condition scale differs by product type (see each doc) |
-| `finish` | `nonfoil` / n/a | singles only |
+| `finish` | `nonfoil` / `reverse_holo` / n/a | singles only; Pokémon uses `reverse_holo` heavily |
 | `language` | `en` | |
 | `quantity` | `1` | `INV-2` |
 | `price` | `0.40` / `155.00` | `PRC` |
@@ -44,9 +46,12 @@ Product (productType: single_card | sealed_product)
 | --- | --- | --- |
 | [Card — MTG](./card-mtg.md) | MTG single cards (printing + inventory) | Draft |
 | [Sealed Product — MTG](./sealed-product-mtg.md) | MTG sealed (boxes, bundles, decks/kits, packs) | Draft |
+| [Card — Pokémon](./card-pokemon.md) | Pokémon TCG singles (printing + inventory) | Draft |
+| [Sealed Product — Pokémon](./sealed-product-pokemon.md) | Pokémon sealed (ETBs, boxes, packs, collections) | Draft |
 
 ## Conventions
 
-- Model everything sellable as a **Product** with a `productType`; share the **Inventory item** layer across all types.
+- Model everything sellable as a **Product** with a `productType` and a `game`; share the **Inventory item** layer across all types and games.
 - Keep gameplay/oracle data out — capture only what's needed to catalog, search, and sell.
 - Link fields to requirement IDs (e.g. `INV-3`, `PRC-10`) so the model stays traceable to [requirements](../../requirements/README.md).
+- **First shows are Pokémon** — prefer `game: Pokemon` seed/catalog work for POC demos aimed at those events; MTG models remain the reference pattern.
