@@ -78,13 +78,16 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 
 - SaaS app lives in `app/` (Next.js). Legacy Jekyll site at repo root is unrelated — **don't disturb** `index.html` / `_layouts/`.
 - Convention POS is `/pos`; storefront stub is `/storefront`. Revive steps: `app/README.md`.
-- Scaffold runs with zero external services (in-memory + local store). Card art is from `cards.scryfall.io` (needs network once, then browser-cached).
+- Scaffold runs with zero external services by default (in-memory + local store). Optional Postgres: `DATABASE_URL` + [`docs/architecture/database-hosting.md`](../../../docs/architecture/database-hosting.md) (`db:push` / `db:seed` / `db:ping`). Prefer **Neon** pooled connection strings; Drizzle schema is in `app/src/data/db/`.
+- Card art is from `cards.scryfall.io` for the MTG prototype (needs network once, then browser-cached).
 - Small TS edits: `npm run typecheck` (and `lint` if you touched TSX). Skip full `build` + browser matrix unless proving a new flow.
 
 ### Product / repo map (easy to miss)
 
 - Center of gravity is still `docs/` (requirements, discovery, architecture). The app is an early scaffold + POS prototype.
+- **Shareable PRD** lives at `docs/prd.md` (POC → MVP → expand). The requirements library under `docs/requirements/` is the deeper breakdown — don’t fork a second full requirements tree when someone asks for a PRD.
 - **First live shows are Pokémon** — selling models live in `docs/architecture/data-model/card-pokemon.md` + `sealed-product-pokemon.md`. Same Product → Inventory pattern as MTG; Pokémon-specific fields include `printedNumber`, SV-era rarities (IR/SIR/HR), `reverse_holo`, and sealed types like `elite_trainer_box`.
+- Cloud Postgres how-to: `docs/architecture/database-hosting.md` (Neon + Drizzle). Agent cannot create the user’s Neon project — user pastes `DATABASE_URL`.
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
 - Check `gh pr list` / open PRs before assuming a path exists on `master`.
 
@@ -121,11 +124,35 @@ Newest first. Template:
 - **Skill/agent:** … (omit if none)
 ```
 
+### 2026-08-16 — Resolve PR #16 merge with master
+
+- **Done:** Merged `origin/master` (PRD + Neon/Drizzle) into `cursor/pokemon-data-model-4b7c`. Kept Pokémon, PRD, and Postgres standing notes plus all 2026-08-16 log entries.
+- **Lesson:** After sibling PRs merge, session-lessons is the only usual conflict — keep every standing bullet; do not open a second PR just to resolve it.
+- **Skill/agent:** Simple content conflict; architecture README auto-merged (hosting + Pokémon index).
+
+### 2026-08-16 — Resolve PR #17 merge with master (PRD)
+
+- **Done:** Merged `origin/master` (PR #15 shareable PRD) into `cursor/cloud-postgres-setup-4b7c`. Kept both standing-lesson bullets and both 2026-08-16 session-log entries.
+- **Lesson:** Session-lessons is the usual conflict surface when two PRs land the same day — keep both log entries (newest first), do not drop the other PR’s standing note.
+- **Skill/agent:** Simple content conflict only; no schema/app intent clash.
+
+### 2026-08-16 — Cloud Postgres / Drizzle POC scaffold
+
+- **Done:** Added Drizzle schema (`tenants`, `products`, `inventory_items`), Neon how-to (`docs/architecture/database-hosting.md`), `db:push`/`seed`/`ping` scripts; verified against local Postgres (seeded 3 Pokémon rows). App still runs without `DATABASE_URL`.
+- **Lesson:** Agent cannot create the user’s Neon account — ship schema + docs; user pastes pooled `DATABASE_URL`. `drizzle-kit push` needs `--force` (or a TTY) in non-interactive agents. Prefer `postgres` (postgres.js) driver — works for both Neon and local Postgres.
+- **Skill/agent:** Branch suffix `-4b7c`. Do not commit `.env.local`.
+
 ### 2026-08-16 — Pokémon selling data models
 
 - **Done:** Added `card-pokemon.md` + `sealed-product-pokemon.md`; indexed in data-model + architecture READMEs. Same Product → Inventory pattern as MTG; Pokémon deltas = printed number, SV rarities, reverse holo, ETB/sealed taxonomy, EN/JA language split.
 - **Lesson:** First shows are Pokémon — prefer those models for POC catalog/seed work. Don’t invent a parallel inventory shape; only the product-layer game fields change. Separate PR from the shareable PRD (`cursor/shareable-prd-poc-4b7c`).
 - **Skill/agent:** Lightweight docs-only; Cloud branch suffix `-4b7c`.
+
+### 2026-08-16 — Shareable POC-first PRD
+
+- **Done:** Added `docs/prd.md` as the single shareable overview (problem, wedge, POC → MVP → expand, success criteria, partner brief); linked from root `README.md`, requirements index, MVP scope, and roadmap.
+- **Lesson:** When the user asks for a “PRD they can easily share,” prefer one top-level `docs/prd.md` that summarizes and links the existing requirements library — don’t duplicate the whole feature/AC tree into a second source of truth. POC is a stricter cut than MVP (seeded catalog + offline demo; no real auth/DB/payments/pickup).
+- **Skill/agent:** Lightweight-changes skill applied (docs-only; no demos). Cloud branch suffix for this run is `-4b7c`.
 
 ### 2026-08-15 — Add living session-lessons skill
 

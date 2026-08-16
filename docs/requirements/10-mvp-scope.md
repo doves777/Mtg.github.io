@@ -56,4 +56,4 @@ Everything else should support that flow.
 
 ## Additional Details
 
-_Add MVP success metrics, cut lines, and sequencing notes here._
+POC-first sequencing, POC success criteria, and the shareable partner brief live in the [PRD](../prd.md). This doc remains the MVP must/should/later cut line once the POC is proven.

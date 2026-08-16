@@ -18,6 +18,7 @@
 - **Clean layering** that mirrors the ADR so real infra drops in without changing callers:
   - `src/domain/` — framework-agnostic model + rules (tenancy, inventory, pricing, orders).
   - `src/data/` — `InventoryRepository` seam (in-memory now → Drizzle/Postgres later) + seed catalog.
+  - `src/data/db/` — Drizzle schema + Neon/Postgres client (optional; see database-hosting doc).
   - `src/offline/` — local store + sync queue (localStorage now → IndexedDB/Workbox later).
   - `src/app/` — Next.js App Router routes and UI.
   - `public/` — PWA `manifest.webmanifest` + a minimal service worker.
@@ -32,6 +33,7 @@ org-based multi-tenancy (RLS), and Vercel + managed Postgres hosting.
 
 - Node.js 18.18+ (developed and verified on Node 22).
 - npm (or pnpm/yarn — a `package-lock.json` is committed for npm).
+- **Optional:** `DATABASE_URL` for cloud/local Postgres ([database hosting](../docs/architecture/database-hosting.md)). Without it, the app still runs on the in-memory seed.
 
 ## Setup & run
 
@@ -39,10 +41,24 @@ org-based multi-tenancy (RLS), and Vercel + managed Postgres hosting.
 cd app
 npm install
 
-# Development (hot reload)
+# Development (hot reload) — in-memory catalog, no DB required
 npm run dev
 # → http://localhost:3000
+```
 
+### Cloud Postgres (Neon) — catalog + inventory source of truth
+
+```bash
+cp .env.example .env.local
+# Create a Neon project, paste the pooled connection string as DATABASE_URL
+npm run db:push
+npm run db:seed
+npm run db:ping
+```
+
+Full steps: [`docs/architecture/database-hosting.md`](../docs/architecture/database-hosting.md).
+
+```bash
 # Type-check / lint / production build
 npm run typecheck
 npm run lint

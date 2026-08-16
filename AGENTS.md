@@ -73,6 +73,7 @@ Services in this repo:
 
 **SaaS app scaffold** (`app/`, if present):
 - Node 22 is preinstalled. Run: `cd app && npm install` then `npm run dev` (http://localhost:3000). Checks: `npm run typecheck`, `npm run lint`, `npm run build`.
-- The scaffold runs with **zero external services** (in-memory + local-store stubs). Full convention POS demo steps live in [`app/README.md`](./app/README.md) (**Revive the convention POS demo later**).
+- The scaffold runs with **zero external services** by default (in-memory + local-store stubs). Optional cloud Postgres: set `DATABASE_URL` (Neon) and follow [`docs/architecture/database-hosting.md`](./docs/architecture/database-hosting.md) (`npm run db:push`, `db:seed`, `db:ping`).
+- Full convention POS demo steps live in [`app/README.md`](./app/README.md) (**Revive the convention POS demo later**).
 - `/pos` = tablet booth flow: search MTG cards (Scryfall art) → cart → cash/card checkout → receipt; orders queue offline-safe. `/storefront` = buyer browse stub.
 - Card images are loaded from `cards.scryfall.io` (needs network once; then browser-cached).
