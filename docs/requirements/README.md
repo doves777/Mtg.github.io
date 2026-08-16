@@ -4,10 +4,13 @@ A living requirements library for the **Card Show Vendor Operations Platform**: 
 
 This folder is the single source of truth for *what* we are building and *why*. It is intentionally kept **high level** for now — each area has room to grow acceptance criteria (AC) and detail over time.
 
+> **Sharing externally?** Start with the one-doc [**PRD**](../prd.md) (POC → MVP → expand). This library is the deeper breakdown.
+
 ## How this is organized
 
 | # | Document | What it covers |
 | --- | --- | --- |
+| — | [**PRD (shareable)**](../prd.md) | Single overview: problem, wedge, POC-first plan, MVP, risks |
 | 00 | [Product Overview](./00-product-overview.md) | Vision, problem, target customers, user types |
 | 01 | [Inventory Management](./features/01-inventory-management.md) | Cataloging and tracking cards across locations |
 | 02 | [Pricing & Price Lookup](./features/02-pricing-and-price-lookup.md) | Fast, consistent pricing incl. dynamic pricing |

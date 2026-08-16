@@ -2,6 +2,8 @@
 
 Home of the **Card Show Vendor Operations Platform** — a SaaS for medium-to-large trading card vendors who sell at card shows, conventions, and events.
 
-## Requirements
+## Start here
 
-Product requirements live in [`docs/requirements`](./docs/requirements/README.md). Start with the [requirements index](./docs/requirements/README.md) for the product overview, feature breakdowns, MVP scope, and roadmap.
+- **[PRD (shareable)](./docs/prd.md)** — one-doc overview: problem, wedge, **POC → MVP → expand**, risks, partner brief
+- **[Requirements library](./docs/requirements/README.md)** — deeper feature docs, MVP cut line, discovery, competitive review
+- **[App scaffold](./app/README.md)** — Next.js POS prototype at `/pos`

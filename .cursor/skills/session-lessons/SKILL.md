@@ -84,6 +84,7 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 ### Product / repo map (easy to miss)
 
 - Center of gravity is still `docs/` (requirements, discovery, architecture). The app is an early scaffold + POS prototype.
+- **Shareable PRD** lives at `docs/prd.md` (POC → MVP → expand). The requirements library under `docs/requirements/` is the deeper breakdown — don’t fork a second full requirements tree when someone asks for a PRD.
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
 - Check `gh pr list` / open PRs before assuming a path exists on `master`.
 
@@ -119,6 +120,12 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-08-16 — Shareable POC-first PRD
+
+- **Done:** Added `docs/prd.md` as the single shareable overview (problem, wedge, POC → MVP → expand, success criteria, partner brief); linked from root `README.md`, requirements index, MVP scope, and roadmap.
+- **Lesson:** When the user asks for a “PRD they can easily share,” prefer one top-level `docs/prd.md` that summarizes and links the existing requirements library — don’t duplicate the whole feature/AC tree into a second source of truth. POC is a stricter cut than MVP (seeded catalog + offline demo; no real auth/DB/payments/pickup).
+- **Skill/agent:** Lightweight-changes skill applied (docs-only; no demos). Cloud branch suffix for this run is `-4b7c`.
 
 ### 2026-08-15 — Add living session-lessons skill
 
