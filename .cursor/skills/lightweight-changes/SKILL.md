@@ -73,6 +73,7 @@ If unsure, **ask once**: "Quick doc/code tweak, or do you want a recorded demo?"
 | MTG single / sealed models | `docs/architecture/data-model/` |
 | Convention POS demo (revive later) | `app/README.md` → `/pos` |
 | Cloud run notes | `AGENTS.md` |
+| Session lessons (read/update every session) | `.cursor/skills/session-lessons/SKILL.md` |
 
 ## Reply style for lightweight work
 

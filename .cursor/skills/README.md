@@ -4,6 +4,7 @@ Skills in this folder teach agents how to work in this repo. Each skill is a `SK
 
 | Skill | Use when |
 | --- | --- |
+| [session-lessons](./session-lessons/SKILL.md) | **Every session.** Read at start; append lessons + skill/agent notes before finishing. |
 | [lightweight-changes](./lightweight-changes/SKILL.md) | Adding or tweaking something simple — requirements, AC, data-model fields, seed/UI copy. **Default for incremental work.** |
 
 Also see root [`AGENTS.md`](../../AGENTS.md) for project map and Cloud run notes.

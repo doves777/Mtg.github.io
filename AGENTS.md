@@ -49,6 +49,7 @@ Link-check pattern used previously: verify every relative `](./...md)` / `](../.
 
 ## Working conventions (git / PR workflow)
 
+- **Session lessons.** At the start of a session, read [`.cursor/skills/session-lessons/SKILL.md`](./.cursor/skills/session-lessons/SKILL.md). Before finishing, append lessons learned and any new skill/agent-functionality notes on the **same branch/PR** as the work.
 - **Lightweight by default.** For simple adds/edits (requirements, AC, seed data, small UI), follow [`.cursor/skills/lightweight-changes/SKILL.md`](./.cursor/skills/lightweight-changes/SKILL.md) — skip screen recordings, browser demos, and parallel agents unless the user asks or it's a new end-to-end flow.
 - **One logical change per branch/PR.** Docs deliverables here have each been their own PR (discovery, competitive review, acceptance criteria, architecture+app).
 - **Branch naming**: `cursor/<descriptive-name>-7d43` (lowercase). Base off latest `master`.
