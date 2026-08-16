@@ -122,6 +122,12 @@ Newest first. Template:
 - **Skill/agent:** … (omit if none)
 ```
 
+### 2026-08-16 — Cloud Postgres / Drizzle POC scaffold
+
+- **Done:** Added Drizzle schema (`tenants`, `products`, `inventory_items`), Neon how-to (`docs/architecture/database-hosting.md`), `db:push`/`seed`/`ping` scripts; verified against local Postgres (seeded 3 Pokémon rows). App still runs without `DATABASE_URL`.
+- **Lesson:** Agent cannot create the user’s Neon account — ship schema + docs; user pastes pooled `DATABASE_URL`. `drizzle-kit push` needs `--force` (or a TTY) in non-interactive agents. Prefer `postgres` (postgres.js) driver — works for both Neon and local Postgres.
+- **Skill/agent:** Branch suffix `-4b7c`. Do not commit `.env.local`.
+
 ### 2026-08-15 — Add living session-lessons skill
 
 - **Done:** Created this skill, indexed it in `.cursor/skills/README.md`, and hooked it from `AGENTS.md` so future sessions actually read/update it.
