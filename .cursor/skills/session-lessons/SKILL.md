@@ -85,6 +85,7 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 ### Product / repo map (easy to miss)
 
 - Center of gravity is still `docs/` (requirements, discovery, architecture). The app is an early scaffold + POS prototype.
+- **Shareable PRD** lives at `docs/prd.md` (POC → MVP → expand). The requirements library under `docs/requirements/` is the deeper breakdown — don’t fork a second full requirements tree when someone asks for a PRD.
 - Cloud Postgres how-to: `docs/architecture/database-hosting.md` (Neon + Drizzle). Agent cannot create the user’s Neon project — user pastes `DATABASE_URL`.
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
 - Check `gh pr list` / open PRs before assuming a path exists on `master`.
@@ -122,11 +123,23 @@ Newest first. Template:
 - **Skill/agent:** … (omit if none)
 ```
 
+### 2026-08-16 — Resolve PR #17 merge with master (PRD)
+
+- **Done:** Merged `origin/master` (PR #15 shareable PRD) into `cursor/cloud-postgres-setup-4b7c`. Kept both standing-lesson bullets and both 2026-08-16 session-log entries.
+- **Lesson:** Session-lessons is the usual conflict surface when two PRs land the same day — keep both log entries (newest first), do not drop the other PR’s standing note.
+- **Skill/agent:** Simple content conflict only; no schema/app intent clash.
+
 ### 2026-08-16 — Cloud Postgres / Drizzle POC scaffold
 
 - **Done:** Added Drizzle schema (`tenants`, `products`, `inventory_items`), Neon how-to (`docs/architecture/database-hosting.md`), `db:push`/`seed`/`ping` scripts; verified against local Postgres (seeded 3 Pokémon rows). App still runs without `DATABASE_URL`.
 - **Lesson:** Agent cannot create the user’s Neon account — ship schema + docs; user pastes pooled `DATABASE_URL`. `drizzle-kit push` needs `--force` (or a TTY) in non-interactive agents. Prefer `postgres` (postgres.js) driver — works for both Neon and local Postgres.
 - **Skill/agent:** Branch suffix `-4b7c`. Do not commit `.env.local`.
+
+### 2026-08-16 — Shareable POC-first PRD
+
+- **Done:** Added `docs/prd.md` as the single shareable overview (problem, wedge, POC → MVP → expand, success criteria, partner brief); linked from root `README.md`, requirements index, MVP scope, and roadmap.
+- **Lesson:** When the user asks for a “PRD they can easily share,” prefer one top-level `docs/prd.md` that summarizes and links the existing requirements library — don’t duplicate the whole feature/AC tree into a second source of truth. POC is a stricter cut than MVP (seeded catalog + offline demo; no real auth/DB/payments/pickup).
+- **Skill/agent:** Lightweight-changes skill applied (docs-only; no demos). Cloud branch suffix for this run is `-4b7c`.
 
 ### 2026-08-15 — Add living session-lessons skill
 
