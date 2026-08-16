@@ -7,6 +7,10 @@
 | **Status** | Draft |
 | **Owner** | _TBD_ |
 
+## Shareable overview
+
+For a single doc you can send to partners or advisors — including the **POC → MVP → expand** cut line — see the [PRD](../prd.md).
+
 ## Kick-Off Recommendations
 
 ### 1. Start with customer discovery
