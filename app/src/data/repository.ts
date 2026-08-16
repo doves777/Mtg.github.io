@@ -2,9 +2,10 @@
  * Repository interface — the seam between the domain and persistence.
  *
  * Per ADR 0001 the production implementation is Postgres via Drizzle, scoped by tenantId
- * and enforced by Row-Level Security. This scaffold ships an in-memory implementation so
- * the app runs with zero external dependencies. Swap `InMemoryInventoryRepository` for a
- * `DrizzleInventoryRepository` without changing callers.
+ * and enforced by Row-Level Security. Schema + client live in `./db/` (optional `DATABASE_URL`).
+ * This scaffold ships an in-memory implementation so the app runs with zero external
+ * dependencies. Swap `InMemoryInventoryRepository` for a `DrizzleInventoryRepository`
+ * without changing callers — see docs/architecture/database-hosting.md.
  */
 
 import type { InventoryItem } from "@/domain/inventory";

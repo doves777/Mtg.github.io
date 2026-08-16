@@ -78,12 +78,14 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 
 - SaaS app lives in `app/` (Next.js). Legacy Jekyll site at repo root is unrelated — **don't disturb** `index.html` / `_layouts/`.
 - Convention POS is `/pos`; storefront stub is `/storefront`. Revive steps: `app/README.md`.
-- Scaffold runs with zero external services (in-memory + local store). Card art is from `cards.scryfall.io` (needs network once, then browser-cached).
+- Scaffold runs with zero external services by default (in-memory + local store). Optional Postgres: `DATABASE_URL` + [`docs/architecture/database-hosting.md`](../../../docs/architecture/database-hosting.md) (`db:push` / `db:seed` / `db:ping`). Prefer **Neon** pooled connection strings; Drizzle schema is in `app/src/data/db/`.
+- Card art is from `cards.scryfall.io` for the MTG prototype (needs network once, then browser-cached).
 - Small TS edits: `npm run typecheck` (and `lint` if you touched TSX). Skip full `build` + browser matrix unless proving a new flow.
 
 ### Product / repo map (easy to miss)
 
 - Center of gravity is still `docs/` (requirements, discovery, architecture). The app is an early scaffold + POS prototype.
+- Cloud Postgres how-to: `docs/architecture/database-hosting.md` (Neon + Drizzle). Agent cannot create the user’s Neon project — user pastes `DATABASE_URL`.
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
 - Check `gh pr list` / open PRs before assuming a path exists on `master`.
 

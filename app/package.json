@@ -8,10 +8,19 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push --force",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "tsx src/data/db/seed-poc.ts",
+    "db:ping": "tsx src/data/db/ping.ts"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
+    "drizzle-orm": "^0.45.2",
     "next": "^15.1.0",
+    "postgres": "^3.4.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -19,8 +28,11 @@
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "dotenv-cli": "^11.0.0",
+    "drizzle-kit": "^0.31.10",
     "eslint": "^9.17.0",
     "eslint-config-next": "^15.1.0",
+    "tsx": "^4.23.12",
     "typescript": "^5.7.0"
   }
 }
