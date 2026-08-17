@@ -60,7 +60,7 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 
 - Default to [lightweight-changes](../lightweight-changes/SKILL.md) for simple adds/edits. Skip screen recordings, browser demos, and parallel agents unless the user asks or the change is a new end-to-end flow.
 - One logical change per branch/PR. Draft PRs; the human merges. Do not mark ready or merge unless asked.
-- `gh` is **read-only** here. Create/update PRs with the PR tool (`ManagePullRequest`), not `gh pr create`.
+- Cloud `gh` is **read-only** (PRs via `ManagePullRequest`). On this Windows desktop, `gh` may be missing until `winget install --id GitHub.cli`; then `gh auth login --web --scopes project` (device code). After that, `gh project create` / `item-create` / `item-edit` work. Don't create a second Ideas project if [project #1](https://github.com/users/doves777/projects/1) already exists.
 - Branch names: `cursor/<descriptive-name>-<suffix>` (lowercase). `AGENTS.md` documents `-7d43` as the historical default; **Cloud runs often inject a different suffix** — follow the run's branch template when present.
 - Parallel agents sharing `/workspace` will stomp each other's `HEAD`. Use isolated git worktrees if work must run in parallel.
 - Avoid index-file merge conflicts: when two open PRs would edit the same spot in `docs/requirements/README.md`, only one should touch it; fold the other index link in after the first merges.
@@ -86,6 +86,7 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 
 - Center of gravity is still `docs/` (requirements, discovery, architecture). The app is an early scaffold + POS prototype.
 - **Shareable PRD** lives at `docs/prd.md` (POC → MVP → expand). The requirements library under `docs/requirements/` is the deeper breakdown — don’t fork a second full requirements tree when someone asks for a PRD.
+- **Ideas pull-back:** [`docs/ideas.md`](../../../docs/ideas.md) indexes every feature/bet; the living board is GitHub Project [Card Show Vendor Ops — Ideas](https://github.com/users/doves777/projects/1) (Horizon / Area / Status). Don't copy AC onto the board.
 - **First live shows are Pokémon** — selling models live in `docs/architecture/data-model/card-pokemon.md` + `sealed-product-pokemon.md`. Same Product → Inventory pattern as MTG; Pokémon-specific fields include `printedNumber`, SV-era rarities (IR/SIR/HR), `reverse_holo`, and sealed types like `elite_trainer_box`.
 - Cloud Postgres how-to: `docs/architecture/database-hosting.md` (Neon + Drizzle). Agent cannot create the user’s Neon project — user pastes `DATABASE_URL`.
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
@@ -105,7 +106,7 @@ How agent machinery actually works in this repo — update this section when a t
 | Lightweight-changes | Default incremental-work skill. Use it; don't escalate to demos. |
 | Session-lessons (this file) | Read at start; update at end; ship on the same PR as the work. |
 | Cloud branch suffix | Per-run. Historical docs say `-7d43`; follow the current run's `cursor/<name>-<suffix>` instruction. |
-| PR tool vs `gh` | `gh` for read (`pr list`, `pr view`, logs). Writes go through `ManagePullRequest`. Draft by default. |
+| PR tool vs `gh` | Cloud: `gh` for read; PRs via `ManagePullRequest`. Desktop: `gh` after `auth login` can write Projects; still draft PRs unless asked to merge. |
 | `SetActiveBranch` | Call when creating/switching a feature branch so the UI tracks the right PR. |
 | MCP servers | Notion, Figma, Datadog may be present. Call `GetMcpTools` for schema **before** `CallMcpTool`. If a server is `needsAuth`, don't loop — the user must auth in desktop Cursor. |
 | Testing / artifacts | Lightweight work: no `RecordScreen` / computer-use. New end-to-end UI flows: demo + artifacts under `/opt/cursor/artifacts` as required by the run. |
@@ -123,6 +124,11 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-08-17 — Ideas inventory + GitHub Project board
+- **Done:** Added `docs/ideas.md` (POC → MVP → Should → Later index) and GitHub Project [#1](https://github.com/users/doves777/projects/1) with 49 feature cards (Horizon/Area/Status). Closed duplicate project #2.
+- **Lesson:** Desktop `gh` is not installed by default (winget `GitHub.cli`). Projects need `gh auth login --web --scopes project`. If an Ideas project already exists, add cards there — a second `project create` just duplicates the board.
+- **Skill/agent:** Lightweight docs; no demos. Parallel local work created two projects with the same title — keep #1.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
