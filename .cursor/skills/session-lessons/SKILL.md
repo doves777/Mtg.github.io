@@ -110,6 +110,8 @@ How agent machinery actually works in this repo — update this section when a t
 | MCP servers | Notion, Figma, Datadog may be present. Call `GetMcpTools` for schema **before** `CallMcpTool`. If a server is `needsAuth`, don't loop — the user must auth in desktop Cursor. |
 | Testing / artifacts | Lightweight work: no `RecordScreen` / computer-use. New end-to-end UI flows: demo + artifacts under `/opt/cursor/artifacts` as required by the run. |
 | Parallel / Task subagents | Don't spawn them for small edits. If you must parallelize, isolated worktrees — never two agents on the same `/workspace` checkout. |
+| At-rest vuln hunter | Daily cron scans `app/` for exploitable chains. **No Slack posting tool** here — findings go to automation memory only (`Mtg.github.io---flagged-vulnerabilities.json`), never GitHub/PRs. Do not open a PR for scan-only runs. If there are no new MEDIUM+ findings, do not rewrite memory. |
+| Next.js lockfile | `app/package.json` says `next: ^15.1.0`; lockfile is **15.5.21** (React 19.2.8). App Router only (no `pages/`, no `route.ts`, no Server Actions, no `next/image`). Postgres is CLI-only unless `DATABASE_URL` is set. GitHub Pages serves the Jekyll root, not the Next.js app. |
 
 ---
 
@@ -123,6 +125,11 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-09-02 — At-rest vulnerability scan (automation)
+- **Done:** Full-repo review of `d838374` (same HEAD as 2026-09-01). No validated MEDIUM/HIGH/CRITICAL findings with an end-to-end attack chain. Did not rewrite flagged-vulnerability memory (still empty). Slack reporter still unavailable.
+- **Lesson:** August 2026 Next.js criticals (15.5.24) do not yield a reportable chain here: Windows+Pages-Router RCE needs a Pages tree we don't have; AVIF image-optimizer RCE needs `next/image` / attacker-controlled AVIF we don't have. POS checkout remains localStorage-only. Skip GitHub comments/PRs for scan-only runs.
+- **Skill/agent:** Vulnerability hunter automation; memory file family `Mtg.github.io---flagged-vulnerabilities.json`.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
