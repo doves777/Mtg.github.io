@@ -110,6 +110,8 @@ How agent machinery actually works in this repo — update this section when a t
 | MCP servers | Notion, Figma, Datadog may be present. Call `GetMcpTools` for schema **before** `CallMcpTool`. If a server is `needsAuth`, don't loop — the user must auth in desktop Cursor. |
 | Testing / artifacts | Lightweight work: no `RecordScreen` / computer-use. New end-to-end UI flows: demo + artifacts under `/opt/cursor/artifacts` as required by the run. |
 | Parallel / Task subagents | Don't spawn them for small edits. If you must parallelize, isolated worktrees — never two agents on the same `/workspace` checkout. |
+| At-rest vuln hunter | Daily cron scans `app/` for exploitable chains. **No Slack posting tool** here — findings go to automation memory only (`Mtg.github.io---flagged-vulnerabilities.json`), never GitHub/PRs. Do not open a PR for scan-only runs. If there are no new MEDIUM+ findings, do not rewrite memory. |
+| Next.js lockfile vs advisories | `app/package.json` says `next: ^15.1.0`; lockfile is **15.5.21**. App Router only (no `pages/`, no `route.ts`, no Server Actions, no `next/image`). Postgres (`getDb`) is CLI-only. GitHub Pages is **off** (`has_pages: false`); the Next app is not product-facing. Aug 2026 Next criticals do not yield a chain here: CVE-2026-75604 needs **both** Pages + App Router **and** a Windows filesystem (Linux/macOS not affected); GHSA-2xp9-vwfh-vxw4 needs Image Optimization of attacker-controlled AVIF. |
 
 ---
 
@@ -123,6 +125,11 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-09-03 — At-rest vulnerability scan (automation)
+- **Done:** Full-repo review of `d8383742314d80450348649674e1b0a08742f870`. No validated MEDIUM/HIGH/CRITICAL findings with an end-to-end attack chain. Did not rewrite flagged-vulnerability memory (still empty). Slack reporter still unavailable.
+- **Lesson:** Same HEAD as 2026-09-01/02 scans. POS checkout is localStorage-only; `createDb` is imported only by `db:seed` / `db:ping`. Do not report framework CVEs without a reachable router/image/OS precondition. Skip GitHub comments/PRs for scan-only runs.
+- **Skill/agent:** Vulnerability hunter automation; memory file family `Mtg.github.io---flagged-vulnerabilities.json`.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
