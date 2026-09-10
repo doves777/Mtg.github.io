@@ -110,6 +110,7 @@ How agent machinery actually works in this repo — update this section when a t
 | MCP servers | Notion, Figma, Datadog may be present. Call `GetMcpTools` for schema **before** `CallMcpTool`. If a server is `needsAuth`, don't loop — the user must auth in desktop Cursor. |
 | Testing / artifacts | Lightweight work: no `RecordScreen` / computer-use. New end-to-end UI flows: demo + artifacts under `/opt/cursor/artifacts` as required by the run. |
 | Parallel / Task subagents | Don't spawn them for small edits. If you must parallelize, isolated worktrees — never two agents on the same `/workspace` checkout. |
+| At-rest vuln hunter (cron) | Flagged-finding memory is `Mtg.github.io---flagged-vulnerabilities.json` (and numbered overflow files). This environment has **no Slack posting tool**. If a scan finds nothing at MEDIUM+, do **not** rewrite memory and do **not** open a PR. The Next.js scaffold still has no HTTP API, auth, RLS, or real sync — do not report documented stubs (`/pos` unauthenticated, `canOverridePrice` unused, schema `isRLSEnabled: false`) without a server-side attack chain. Lockfile is Next `15.5.21` / React `19.2.8`; later framework CVEs still need a reachable path in *this* app (no `next/image` / `remotePatterns`, App Router only, intended host is Linux/Vercel). |
 
 ---
 
@@ -123,6 +124,12 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-09-10 — At-rest vulnerability scan (cron)
+
+- **Done:** Scanned `d838374` (docs + Next.js POS scaffold). No validated MEDIUM/HIGH/CRITICAL findings with an end-to-end attack chain. Did not post (no Slack tool) and did not rewrite flagged-vulnerability memory.
+- **Lesson:** Treat the POS/storefront as a local demo: `flush()` is a stub, inventory is a seed array, DB is CLI-only. Framework CVE version checks are not enough — confirm Image Optimization, Server Actions, Windows hosting, and similar preconditions before reporting.
+- **Skill/agent:** Automation memory `Mtg.github.io---flagged-vulnerabilities.json` was empty. Scan-only; no PR.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
