@@ -90,6 +90,7 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 - Cloud Postgres how-to: `docs/architecture/database-hosting.md` (Neon + Drizzle). Agent cannot create the user’s Neon project — user pastes `DATABASE_URL`.
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
 - Check `gh pr list` / open PRs before assuming a path exists on `master`.
+- Daily at-rest vuln hunter: read/write only `Mtg.github.io---flagged-vulnerabilities.json` (and numbered overflow files). No Slack posting tool in this environment — store new findings in memory only. If there are zero new validated MEDIUM+ findings, do not rewrite memory and do not open a GitHub PR/comment. Next lockfile is `15.5.21`; August 2026 Next criticals still have no end-to-end chain here (Windows cache-path RCE needs Windows; AVIF optimizer RCE needs attacker-controlled AVIF via `/_next/image`; this app uses raw `<img>`, has no middleware/server actions, and POS checkout is localStorage-only).
 
 ---
 
@@ -123,6 +124,11 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-09-16 — At-rest vulnerability scan (automation)
+- **Done:** Full-repo review of `d838374`. No validated MEDIUM/HIGH/CRITICAL findings with an end-to-end attack chain. Did not rewrite flagged-vulnerability memory (still empty). Slack reporter still unavailable.
+- **Lesson:** Same HEAD as prior September scans. Next 15.5.21 already includes the July 2026 middleware/SSRF/Server-Action fixes; remaining 15.5.24 criticals still do not yield a reportable chain (no Windows host, no `next/image`/remotePatterns/AVIF upload, no auth middleware to bypass). POS remains localStorage-only. Skip GitHub comments/PRs for scan-only runs.
+- **Skill/agent:** Vulnerability hunter automation; memory file family `Mtg.github.io---flagged-vulnerabilities.json`.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
