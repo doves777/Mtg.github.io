@@ -90,6 +90,7 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 - Cloud Postgres how-to: `docs/architecture/database-hosting.md` (Neon + Drizzle). Agent cannot create the user’s Neon project — user pastes `DATABASE_URL`.
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
 - Check `gh pr list` / open PRs before assuming a path exists on `master`.
+- Daily at-rest vuln hunter: read/write only `Mtg.github.io---flagged-vulnerabilities.json` (and numbered overflow files). No Slack posting tool in this environment — store new findings in memory only. If there are zero new validated MEDIUM+ findings, do not rewrite memory and do not open a GitHub PR/comment. Locked Next is `15.5.21`. Framework CVEs still need an end-to-end chain here: Windows cache-path RCE needs Windows; AVIF optimizer RCE needs attacker-controlled AVIF via `/_next/image` (this app uses raw `<img>`, no `remotePatterns`); Sep 22 2026 ImageResponse/Satori RCE (`GHSA-vcvr-r3jv-pc5j`) affects Next `>=16.2.0 <16.3.6` only — 15.x is not affected and this app has no `next/og`. POS checkout is localStorage-only; no middleware, server actions, or API routes.
 
 ---
 
@@ -123,6 +124,11 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-09-23 — At-rest vulnerability scan (automation)
+- **Done:** Full-repo review of `d838374`. No validated MEDIUM/HIGH/CRITICAL findings with an end-to-end attack chain. Did not rewrite flagged-vulnerability memory (still empty). Slack reporter still unavailable.
+- **Lesson:** Same HEAD as prior September scans. Rechecked the Sep 22 2026 ImageResponse advisory — RCE is Next 16.2–16.3.5 only; 15.5.21 is outside that range and this scaffold never calls `ImageResponse`. Skip GitHub comments/PRs for scan-only runs.
+- **Skill/agent:** Vulnerability hunter automation; memory file family `Mtg.github.io---flagged-vulnerabilities.json`.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
