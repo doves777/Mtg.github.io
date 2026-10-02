@@ -82,6 +82,13 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 - Card art is from `cards.scryfall.io` for the MTG prototype (needs network once, then browser-cached).
 - Small TS edits: `npm run typecheck` (and `lint` if you touched TSX). Skip full `build` + browser matrix unless proving a new flow.
 
+### Security / vulnerability hunter (cron automation)
+
+- At-rest scans write findings only to automation memory `Mtg.github.io---flagged-vulnerabilities.json` (and numbered overflow files). Do **not** put vulnerability details in git, GitHub PRs/comments, or session-lessons beyond operational notes.
+- This environment has **no Slack posting tool**. If there are no new MEDIUM+ findings, do not rewrite memory and do not open a PR.
+- The Next.js scaffold has **no HTTP API / route handlers / auth / payments**. POS checkout and the outbox live in `localStorage`; Drizzle is CLI-only (`db:seed` / `db:ping`) until a repository swap. Missing auth, unused `canOverridePrice`, and schema-without-RLS are stubs, not exploitable chains.
+- npm audit criticals on `next@15.5.21` (GHSA-p293-qw3h-jr36 Windows RCE; GHSA-2xp9-vwfh-vxw4 AVIF optimizer RCE) are **not reportable here**: no Windows deploy target (ADR is Vercel/Linux), no `next/image` / attacker-controlled AVIF, no `images.remotePatterns`.
+
 ### Product / repo map (easy to miss)
 
 - Center of gravity is still `docs/` (requirements, discovery, architecture). The app is an early scaffold + POS prototype.
@@ -123,6 +130,11 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-10-02 — At-rest vulnerability scan (automation)
+- **Done:** Full-repo review of `d838374`. No validated MEDIUM/HIGH/CRITICAL findings with an end-to-end attack chain. Flagged-vulnerability memory left empty/unrewritten. No Slack reporter in this environment.
+- **Lesson:** Reconfirmed: no API routes, POS is localStorage-only, Drizzle has no web path, Next.js 15.5.21 criticals are not reachable on this scaffold. Skip GitHub PRs/comments for scan-only runs.
+- **Skill/agent:** Vulnerability hunter automation; memory family `Mtg.github.io---flagged-vulnerabilities.json`.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
