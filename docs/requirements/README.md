@@ -11,6 +11,7 @@ This folder is the single source of truth for *what* we are building and *why*. 
 | # | Document | What it covers |
 | --- | --- | --- |
 | — | [**PRD (shareable)**](../prd.md) | Single overview: problem, wedge, POC-first plan, MVP, risks |
+| — | [**Ideas inventory**](../ideas.md) | Pull-back map of every feature/bet; [GitHub Project](https://github.com/users/doves777/projects/1) |
 | 00 | [Product Overview](./00-product-overview.md) | Vision, problem, target customers, user types |
 | 01 | [Inventory Management](./features/01-inventory-management.md) | Cataloging and tracking cards across locations |
 | 02 | [Pricing & Price Lookup](./features/02-pricing-and-price-lookup.md) | Fast, consistent pricing incl. dynamic pricing |

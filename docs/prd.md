@@ -5,7 +5,7 @@
 | **Status** | Draft |
 | **Audience** | Founders, design partners, engineers, advisors |
 | **Last updated** | 2026-08-16 |
-| **Related** | [Requirements library](./requirements/README.md) · [MVP scope](./requirements/10-mvp-scope.md) · [Roadmap](./requirements/13-roadmap-and-next-steps.md) · [Tech stack ADR](./architecture/0001-tech-stack.md) |
+| **Related** | [Ideas inventory + board](./ideas.md) · [Requirements library](./requirements/README.md) · [MVP scope](./requirements/10-mvp-scope.md) · [Roadmap](./requirements/13-roadmap-and-next-steps.md) · [Tech stack ADR](./architecture/0001-tech-stack.md) |
 
 > **How to use this doc:** this is the single shareable overview. Deep requirement IDs, acceptance criteria, and research live under [`docs/requirements/`](./requirements/README.md). Start here; drill down only when you need detail.
 
