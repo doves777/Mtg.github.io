@@ -82,6 +82,13 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 - Card art is from `cards.scryfall.io` for the MTG prototype (needs network once, then browser-cached).
 - Small TS edits: `npm run typecheck` (and `lint` if you touched TSX). Skip full `build` + browser matrix unless proving a new flow.
 
+### Security / vulnerability hunter (cron automation)
+
+- At-rest scans write findings only to automation memory `Mtg.github.io---flagged-vulnerabilities.json` (and numbered overflow files). Do **not** put vulnerability details in git, GitHub PRs/comments, or session-lessons beyond operational notes.
+- This environment has **no Slack posting tool**. If there are no new MEDIUM+ findings, do not rewrite memory and do not open a PR.
+- The Next.js scaffold has **no HTTP API / route handlers / auth / payments**. POS checkout and the outbox live in `localStorage`; Drizzle is CLI-only (`db:seed` / `db:ping`) until a repository swap. Missing auth, unused `canOverridePrice`, and schema-without-RLS are stubs, not exploitable chains.
+- Locked `next@15.5.21` (React 19.2.8): skip framework CVEs that need `images.remotePatterns`, Server Actions, SSG/ISR catch-alls, `next/og`, or Windows/AVIF optimizer paths — this app uses none of those. Sept 2026 Image Optimizer SSRF (CVE-2026-94483) requires `remotePatterns`, which `next.config.mjs` does not set.
+
 ### Product / repo map (easy to miss)
 
 - Center of gravity is still `docs/` (requirements, discovery, architecture). The app is an early scaffold + POS prototype.
@@ -123,6 +130,12 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-10-07 — At-rest vulnerability scan (automation)
+
+- **Done:** Full-repo review of `d838374`. No validated MEDIUM/HIGH/CRITICAL findings with an end-to-end attack chain. Flagged-vulnerability memory left empty/unrewritten. No Slack reporter in this environment.
+- **Lesson:** Reconfirmed: no API routes, POS is localStorage-only, Drizzle has no web path. Sept 2026 Next.js advisories are not reachable without `remotePatterns` / Server Actions / SSG catch-alls. Skip GitHub PRs/comments for scan-only runs.
+- **Skill/agent:** Vulnerability hunter automation; memory family `Mtg.github.io---flagged-vulnerabilities.json`.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
