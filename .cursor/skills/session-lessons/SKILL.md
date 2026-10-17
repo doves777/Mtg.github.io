@@ -90,6 +90,7 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 - Cloud Postgres how-to: `docs/architecture/database-hosting.md` (Neon + Drizzle). Agent cannot create the user’s Neon project — user pastes `DATABASE_URL`.
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
 - Check `gh pr list` / open PRs before assuming a path exists on `master`.
+- At-rest vuln scans of current `master` have no validated MEDIUM+ attack chain. Do not report POC stubs (unauthenticated `/pos`, unused `canOverridePrice`, schema without RLS) or Next.js CVEs whose preconditions this app does not meet (no middleware, no `next/image`, no Pages Router, no Server Actions/API/sync). Re-check only when a server API, auth, or real sync endpoint lands. Memory family: `Mtg.github.io---flagged-vulnerabilities.json`. Slack `SendSlackMessage` is not available here.
 
 ---
 
@@ -110,6 +111,8 @@ How agent machinery actually works in this repo — update this section when a t
 | MCP servers | Notion, Figma, Datadog may be present. Call `GetMcpTools` for schema **before** `CallMcpTool`. If a server is `needsAuth`, don't loop — the user must auth in desktop Cursor. |
 | Testing / artifacts | Lightweight work: no `RecordScreen` / computer-use. New end-to-end UI flows: demo + artifacts under `/opt/cursor/artifacts` as required by the run. |
 | Parallel / Task subagents | Don't spawn them for small edits. If you must parallelize, isolated worktrees — never two agents on the same `/workspace` checkout. |
+| At-rest vuln hunter | Cron automation. Empty memory is expected until a real HTTP/auth surface exists. Do not rewrite memory or post Slack when there are zero new findings. Do not open a PR for scan-only runs. |
+| Next.js lockfile | `app/package.json` says `next: ^15.1.0`; lockfile is **15.5.21** (React 19.2.8). App Router only (no `pages/`, no `route.ts`, no Server Actions, no `next/image`). Postgres is CLI-only unless `DATABASE_URL` is set. GitHub Pages serves the Jekyll root, not the Next.js app. |
 
 ---
 
@@ -123,6 +126,12 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-10-17 — At-rest vulnerability scan (d838374)
+
+- **Done:** Full-repo hunt of `d838374` (`app/` POS/storefront scaffold, Drizzle CLI, Jekyll + pitch HTML). No new MEDIUM+ findings; did not rewrite flagged-vulnerability memory or post Slack.
+- **Lesson:** Attack surface is still client-only stubs + CLI db scripts. Pitch decks parse `location.hash` with `parseInt` only — not XSS. Lockfile Next 15.5.21 is past React2Shell / July 2026 patches; August 2026 RCEs (Windows+Pages, AVIF `/_next/image`) still lack a chain here.
+- **Skill/agent:** Cron Vulnerability Hunter. No `SendSlackMessage` tool in this environment. Scan-only — do not open a findings PR.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
