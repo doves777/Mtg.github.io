@@ -91,6 +91,12 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
 - Check `gh pr list` / open PRs before assuming a path exists on `master`.
 
+### At-rest vulnerability hunter (cron)
+
+- Findings live in automation memory file `Mtg.github.io---flagged-vulnerabilities.json` (not in git). This Cloud environment has **no Slack posting tool**; if that remains true, new findings go to memory only.
+- **No new MEDIUM+ findings → do not post and do not rewrite memory.** Do not open GitHub PRs/comments/reviews for at-rest scans, and do not commit finding JSON.
+- Current product attack surface is a Next.js **POC scaffold**: no API routes, no middleware, no auth, no server DB on HTTP. `inventoryRepository` is in-memory; Postgres is CLI-only (`db:seed` / `db:ping`). POS `/pos`, storefront, and `flush()` sync are documented stubs. Do not report missing auth, missing RLS, or stub sync as exploitable issues until those become live request paths.
+
 ---
 
 ## Agent & skill functionality
@@ -123,6 +129,11 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-10-22 — Daily at-rest vulnerability scan
+- **Done:** Scanned `d838374` (master / Pokémon data-model merge). No validated MEDIUM+ findings with a complete remote attack chain; Slack reporter unavailable; flagged-vulnerability memory left unchanged (still empty).
+- **Lesson:** Until the scaffold grows HTTP APIs/auth/DB-backed routes, this cron will keep finding nothing reportable — missing POC auth/RLS/sync is documented stub behavior, not an exploit path.
+- **Skill/agent:** Vulnerability hunter automation. Allowed destinations are Slack (absent here) + automation memory; do not PR findings.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
