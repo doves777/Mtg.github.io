@@ -82,6 +82,12 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 - Card art is from `cards.scryfall.io` for the MTG prototype (needs network once, then browser-cached).
 - Small TS edits: `npm run typecheck` (and `lint` if you touched TSX). Skip full `build` + browser matrix unless proving a new flow.
 
+### At-rest vulnerability scans
+
+- Daily hunter runs scan `master`-equivalent HEAD. Until the scaffold grows HTTP APIs, auth, or DB-backed routes, there is **no remote attack chain** to report. Missing POC auth/RLS/sync is documented stub behavior (`app/README.md`), not an exploit.
+- Report new MEDIUM+ findings only to Slack (if a posting tool exists) then automation memory (`Mtg.github.io---flagged-vulnerabilities.json`). If there are zero new findings, do not post and do not rewrite memory. Do **not** open a findings PR.
+- Next.js is locked at 15.5.21. Framework CVEs that need Server Actions, `use cache` / Cache Components, `next/image` SVG optimization (`dangerouslyAllowSVG`), or `images.remotePatterns` do not apply here (no `route.ts` / middleware / server actions; storefront uses raw `<img>`).
+
 ### Product / repo map (easy to miss)
 
 - Center of gravity is still `docs/` (requirements, discovery, architecture). The app is an early scaffold + POS prototype.
@@ -123,6 +129,11 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-10-24 — Daily at-rest vulnerability scan
+- **Done:** Scanned `d838374` (same HEAD as the 2026-10-22 run). No validated MEDIUM+ findings with a complete remote attack chain. Slack reporter still unavailable; flagged-vulnerability memory left unchanged (empty).
+- **Lesson:** Re-confirmed: no `route.ts`/middleware/server actions; GitHub Pages is not enabled; image-optimizer/SVG and Server-Action CVEs on Next 15.5.21 are not reachable from this scaffold. Scan-only runs must not open PRs.
+- **Skill/agent:** Vulnerability hunter automation. Destinations: Slack (absent) + automation memory only.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
