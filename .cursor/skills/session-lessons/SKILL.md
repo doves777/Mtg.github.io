@@ -81,6 +81,7 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 - Scaffold runs with zero external services by default (in-memory + local store). Optional Postgres: `DATABASE_URL` + [`docs/architecture/database-hosting.md`](../../../docs/architecture/database-hosting.md) (`db:push` / `db:seed` / `db:ping`). Prefer **Neon** pooled connection strings; Drizzle schema is in `app/src/data/db/`.
 - Card art is from `cards.scryfall.io` for the MTG prototype (needs network once, then browser-cached).
 - Small TS edits: `npm run typecheck` (and `lint` if you touched TSX). Skip full `build` + browser matrix unless proving a new flow.
+- At-rest vuln scans of this scaffold should not report missing POS auth, unused `canOverridePrice`, missing RLS, or unpatched Next.js unless there is a real HTTP/API attack chain. Checkout writes `localStorage` only (`flush()` is a stub); there are no `route.ts` handlers, Server Actions, middleware, `next/image`, rewrites, or OG routes. Locked `next@15.5.21` already includes the React2Shell patch (`15.5.7+`). Later advisories (`15.5.27` / `15.5.28`) still need Image Optimization with attacker-controlled SVG or `images.remotePatterns`, Server Actions, `'use cache'` / Cache Components, Pages Router SSG/ISR, metadata image routes, or a root catch-all — none of which exist here.
 
 ### Product / repo map (easy to miss)
 
@@ -110,6 +111,7 @@ How agent machinery actually works in this repo — update this section when a t
 | MCP servers | Notion, Figma, Datadog may be present. Call `GetMcpTools` for schema **before** `CallMcpTool`. If a server is `needsAuth`, don't loop — the user must auth in desktop Cursor. |
 | Testing / artifacts | Lightweight work: no `RecordScreen` / computer-use. New end-to-end UI flows: demo + artifacts under `/opt/cursor/artifacts` as required by the run. |
 | Parallel / Task subagents | Don't spawn them for small edits. If you must parallelize, isolated worktrees — never two agents on the same `/workspace` checkout. |
+| Vuln-hunter automation | Memory family is `Mtg.github.io---flagged-vulnerabilities.json` (empty until a MEDIUM+ chain exists). No Slack posting tool in this environment — store in memory only after posting would have succeeded. Skip GitHub comments/PRs for scan-only runs with no findings. Do not rewrite memory when there are zero new findings. |
 
 ---
 
@@ -123,6 +125,12 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-10-26 — At-rest vulnerability scan (cron)
+
+- **Done:** Full-repo review of `d8383742314d80450348649674e1b0a08742f870`. No validated MEDIUM/HIGH/CRITICAL findings with an end-to-end attack chain. Did not rewrite flagged-vulnerability memory (still empty). Slack reporter still unavailable.
+- **Lesson:** Same bar as prior scans of this commit: do not report POC stubs (unauthenticated `/pos`, client-side discounts, schema without RLS) or Next.js CVEs whose preconditions this app does not meet. Re-check only when a server API, auth, `next/image`/`remotePatterns`, Server Actions, or a real sync endpoint lands.
+- **Skill/agent:** Vulnerability hunter automation; memory file family `Mtg.github.io---flagged-vulnerabilities.json`.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
