@@ -110,6 +110,8 @@ How agent machinery actually works in this repo — update this section when a t
 | MCP servers | Notion, Figma, Datadog may be present. Call `GetMcpTools` for schema **before** `CallMcpTool`. If a server is `needsAuth`, don't loop — the user must auth in desktop Cursor. |
 | Testing / artifacts | Lightweight work: no `RecordScreen` / computer-use. New end-to-end UI flows: demo + artifacts under `/opt/cursor/artifacts` as required by the run. |
 | Parallel / Task subagents | Don't spawn them for small edits. If you must parallelize, isolated worktrees — never two agents on the same `/workspace` checkout. |
+| At-rest vuln hunter | Daily cron. **No Slack posting tool** in this environment — if there are new MEDIUM+ findings, store them in automation memory only (`Mtg.github.io---flagged-vulnerabilities.json`), never GitHub/PRs/comments. Do **not** open a PR for scan-only runs. If there are no new findings, do not rewrite memory and do not post. |
+| Next.js lockfile vs advisories | `app/package.json` says `next: ^15.1.0`; lockfile is **15.5.21** (React 19.2.8). App Router only (no `pages/`, no `route.ts`, no Server Actions, no `next/image`, no `use cache` / Cache Components, no `images.remotePatterns`). Postgres is CLI-only (`db:ping` / `db:seed`); web routes never call `getDb()`. GitHub Pages would serve the Jekyll root, not the Next.js app. Skip inapplicable Next.js/React advisories (Windows+Pages RCE, AVIF/SVG image-optimizer RCE without attacker-controlled images, Server Action DoS, `use cache` typed-array RCE which is 16.x-only). POS checkout is localStorage-only. |
 
 ---
 
@@ -123,6 +125,11 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-10-28 — At-rest vulnerability scan (automation)
+- **Done:** Full-repo review of `d8383742314d80450348649674e1b0a08742f870`. No validated MEDIUM/HIGH/CRITICAL findings with an end-to-end attack chain. Did not rewrite flagged-vulnerability memory (still empty). Slack reporter still unavailable; did not open a PR.
+- **Lesson:** October 14 2026 Next.js updates (15.5.28) still do not yield a reportable chain here: SVG image-optimizer RCE needs attacker-controlled SVG through `/_next/image` (this app uses raw `<img>` + Scryfall, default `dangerouslyAllowSVG` is off, no `remotePatterns`); `use cache` typed-array RCE is 16.x + Cache Components; Server Action DoS needs at least one `"use server"` module. Unauthenticated `/pos` remains a documented POC stub that only writes `localStorage`.
+- **Skill/agent:** Vulnerability hunter automation; memory file family `Mtg.github.io---flagged-vulnerabilities.json`.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
