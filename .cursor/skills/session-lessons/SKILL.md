@@ -110,6 +110,8 @@ How agent machinery actually works in this repo — update this section when a t
 | MCP servers | Notion, Figma, Datadog may be present. Call `GetMcpTools` for schema **before** `CallMcpTool`. If a server is `needsAuth`, don't loop — the user must auth in desktop Cursor. |
 | Testing / artifacts | Lightweight work: no `RecordScreen` / computer-use. New end-to-end UI flows: demo + artifacts under `/opt/cursor/artifacts` as required by the run. |
 | Parallel / Task subagents | Don't spawn them for small edits. If you must parallelize, isolated worktrees — never two agents on the same `/workspace` checkout. |
+| At-rest vuln hunter | Daily cron. No `SendSlackMessage` tool here — new MEDIUM+ findings go to automation memory only (`Mtg.github.io---flagged-vulnerabilities.json`), never GitHub comments/PRs. Do not open a PR for scan-only runs. If there are no new findings, do not rewrite memory and do not post. |
+| Next.js lockfile vs advisories | `app/package.json` says `next: ^15.1.0`; lockfile is **15.5.21**. App Router only (no `pages/`, `middleware.ts`, `route.ts`, Server Actions, `next/image`, `use cache`, or `images.remotePatterns`). Postgres is CLI-only; web routes never call `getDb()`. GitHub Pages is **disabled** (`has_pages: false`). Skip inapplicable advisories until a server API, auth, real sync, or production `next start` deploy lands. POS checkout is localStorage-only. |
 
 ---
 
@@ -123,6 +125,12 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-10-30 — At-rest vulnerability scan (automation)
+
+- **Done:** Re-scanned `d8383742314d80450348649674e1b0a08742f870` (POS/storefront, Drizzle CLI, Jekyll + pitch HTML, GitHub repo settings). No validated MEDIUM/HIGH/CRITICAL findings. Did not rewrite flagged-vulnerability memory (still empty). Slack reporter unavailable; did not open a PR.
+- **Lesson:** Same commit as the 2026-10-28 hunt. GitHub Pages remains off. October 14 Next.js updates still lack a chain here (SVG optimizer RCE needs attacker-controlled SVG through `/_next/image`; `use cache` RCE is 16.x; Server Action DoS needs `"use server"`). Watch the announced 2026-11-03 Next.js medium-advisory drop on the next run.
+- **Skill/agent:** Cron Vulnerability Hunter. Memory family `Mtg.github.io---flagged-vulnerabilities.json`.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
