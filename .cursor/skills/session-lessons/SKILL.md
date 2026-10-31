@@ -110,6 +110,7 @@ How agent machinery actually works in this repo — update this section when a t
 | MCP servers | Notion, Figma, Datadog may be present. Call `GetMcpTools` for schema **before** `CallMcpTool`. If a server is `needsAuth`, don't loop — the user must auth in desktop Cursor. |
 | Testing / artifacts | Lightweight work: no `RecordScreen` / computer-use. New end-to-end UI flows: demo + artifacts under `/opt/cursor/artifacts` as required by the run. |
 | Parallel / Task subagents | Don't spawn them for small edits. If you must parallelize, isolated worktrees — never two agents on the same `/workspace` checkout. |
+| Cron Vulnerability Hunter | Empty `Mtg.github.io---flagged-vulnerabilities.json` must not be rewritten when there are no new MEDIUM+ findings. This environment has no Slack posting tool (`SendSlackMessage` is absent). `gh` reports `has_pages: false`. Do not report `next@15.5.21` npm-audit RCE/DoS CVEs until a self-hosted `next start` surface actually meets the advisory preconditions (Windows host, `next/image`/AVIF/SVG optimization, Server Actions, or Cache Components). |
 
 ---
 
@@ -123,6 +124,12 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-10-31 — At-rest vulnerability hunt (cron)
+
+- **Done:** Full-repo hunt of `d8383742314d80450348649674e1b0a08742f870` (`app/` POS/storefront scaffold, Drizzle CLI, Jekyll + pitch HTML). No new MEDIUM+ findings; did not rewrite flagged-vulnerability memory or post Slack.
+- **Lesson:** Same commit as prior October hunts. GitHub Pages remains off; no API/middleware/auth; `/pos` checkout is localStorage-only. `next@15.5.21` audit still includes Windows/AVIF/SVG image-optimizer RCEs and Server Action DoS, but this scaffold does not meet those preconditions.
+- **Skill/agent:** Cron Vulnerability Hunter. No `SendSlackMessage` tool. Memory file `Mtg.github.io---flagged-vulnerabilities.json` remains empty.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
