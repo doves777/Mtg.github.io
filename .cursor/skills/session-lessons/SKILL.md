@@ -110,6 +110,7 @@ How agent machinery actually works in this repo — update this section when a t
 | MCP servers | Notion, Figma, Datadog may be present. Call `GetMcpTools` for schema **before** `CallMcpTool`. If a server is `needsAuth`, don't loop — the user must auth in desktop Cursor. |
 | Testing / artifacts | Lightweight work: no `RecordScreen` / computer-use. New end-to-end UI flows: demo + artifacts under `/opt/cursor/artifacts` as required by the run. |
 | Parallel / Task subagents | Don't spawn them for small edits. If you must parallelize, isolated worktrees — never two agents on the same `/workspace` checkout. |
+| Vulnerability hunter cron | Memory family `Mtg.github.io---flagged-vulnerabilities.json`. This environment has no `SendSlackMessage` tool. If there are no new MEDIUM+ findings, do not rewrite memory and do not post. Lockfile Next.js CVEs are not reportable here unless a sink is actually reachable: this scaffold has no middleware, `next/image`, Server Actions, route handlers, or `images.remotePatterns`. |
 
 ---
 
@@ -123,6 +124,12 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-11-07 — At-rest vulnerability scan (d838374)
+
+- **Done:** Full-repo hunt of `d8383742314d80450348649674e1b0a08742f870` (`app/` POS/storefront scaffold, Drizzle CLI, Jekyll + pitch HTML). No new MEDIUM+ findings; did not rewrite flagged-vulnerability memory or post Slack.
+- **Lesson:** Same HEAD as prior 2026 scans. Next 15.5.21 / sharp 0.34.5 still have image-optimizer advisories (SVG RCE, SVG-rejection bypass), but `/_next/image` requires a permitted local or `remotePatterns` source and this app has neither attacker-controlled images nor `next/image`. Pitch decks still `parseInt` `location.hash` only. POS checkout remains localStorage-only.
+- **Skill/agent:** Cron Vulnerability Hunter. No `SendSlackMessage` tool. Memory file `Mtg.github.io---flagged-vulnerabilities.json` remains empty.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
