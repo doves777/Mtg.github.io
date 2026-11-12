@@ -90,6 +90,7 @@ Do this even on small / docs-only work. Skip only if the session produced **zero
 - Cloud Postgres how-to: `docs/architecture/database-hosting.md` (Neon + Drizzle). Agent cannot create the user’s Neon project — user pastes `DATABASE_URL`.
 - Pitch decks under `pitch/` (THE MILLION sponsor deck, WotC approval briefing) are **separate** from the vendor SaaS. Don't mix those PRs into requirements/app work.
 - Check `gh pr list` / open PRs before assuming a path exists on `master`.
+- At-rest vuln scans of current `master` (`d838374`) have no validated MEDIUM+ attack chain. Do not report POC stubs (unauthenticated `/pos`, unused `canOverridePrice`, schema without RLS, CLI-only `getDb()`). Lockfile is `next@15.5.21`. Through the November 2026 Next.js release, the named RCEs/DoS/disclosure bugs are **not** exploitable here: no Cache Components / `use cache`, no Server Actions, no `next/image` / `remotePatterns` / `dangerouslyAllowSVG`, no Edge cookie setters, no production `next start` deploy, GitHub Pages is off. Re-check when a server API, auth, real sync, or hosted `next start` lands. Memory family: `Mtg.github.io---flagged-vulnerabilities.json`. Slack `SendSlackMessage` is not available.
 
 ---
 
@@ -110,6 +111,7 @@ How agent machinery actually works in this repo — update this section when a t
 | MCP servers | Notion, Figma, Datadog may be present. Call `GetMcpTools` for schema **before** `CallMcpTool`. If a server is `needsAuth`, don't loop — the user must auth in desktop Cursor. |
 | Testing / artifacts | Lightweight work: no `RecordScreen` / computer-use. New end-to-end UI flows: demo + artifacts under `/opt/cursor/artifacts` as required by the run. |
 | Parallel / Task subagents | Don't spawn them for small edits. If you must parallelize, isolated worktrees — never two agents on the same `/workspace` checkout. |
+| At-rest vuln hunter | Cron automation. Empty memory is expected until a real HTTP/auth surface exists. Do not rewrite memory or post Slack when there are zero new findings. Do not open a findings PR. |
 
 ---
 
@@ -123,6 +125,12 @@ Newest first. Template:
 - **Lesson:** …
 - **Skill/agent:** … (omit if none)
 ```
+
+### 2026-11-12 — At-rest vulnerability scan (d838374)
+
+- **Done:** Re-scanned `d8383742314d80450348649674e1b0a08742f870` (`app/` POS/storefront, Drizzle CLI, Jekyll + pitch HTML, lockfile `next@15.5.21`). No new MEDIUM+ findings; did not rewrite flagged-vulnerability memory or post Slack. Confirmed `has_pages: false` and no App Router `route.ts` / middleware / `"use server"`.
+- **Lesson:** Same commit as the Oct 2026 hunts. Newer Next.js advisories (Oct 14 RCE/DoS, Nov 2026 cache/`use cache`/SVG optimizer) still have no attack chain here. Do not report missing POC auth/RLS.
+- **Skill/agent:** Cron Vulnerability Hunter. No `SendSlackMessage` tool. Memory file `Mtg.github.io---flagged-vulnerabilities.json` remains empty.
 
 ### 2026-08-16 — Resolve PR #16 merge with master
 
